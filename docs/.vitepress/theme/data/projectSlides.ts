@@ -1,25 +1,25 @@
 export const paintSlides = [
     {
     type: 'video',
-    src: '/Videos/Paint/Slideshow/GPNJ.mp4',
+    src: './Videos/Paint/Slideshow/GPNJ.mp4',
     caption: 'Bouncy green paint effect on player ',
     related: [{ label: 'Core Gameplay Loop & Paint Powers', targetId: 'core-loop' }]
   },
     {
     type: 'video',
-    src: '/Videos/Paint/Slideshow/PHWN.mp4',
+    src: './Videos/Paint/Slideshow/PHWN.mp4',
     caption: 'Orange paint phasing interaction on phaseable surface',
     related: [{ label: 'Core Gameplay Loop & Paint Powers', targetId: 'core-loop' }]
   },
     {
     type: 'video',
-    src: '/Videos/Paint/Slideshow/SP.mp4',
+    src: './Videos/Paint/Slideshow/SP.mp4',
     caption: 'Spatial partitioning / collider merging for paint decals.',
     related: [{ label: 'Architecture & Performance', targetId: 'arch-perf' }]
   },
     {
     type: 'video',
-    src: '/Videos/Paint/Slideshow/CHPN.mp4',
+    src: './Videos/Paint/Slideshow/CHPN.mp4',
     caption: 'Checkpoint feedback + VFX timing (muted).',
     related: [{ label: 'Level Interaction', targetId: 'level-interaction' },{ label: 'Materials & VFX', targetId: 'materials-vfx' }]
   },
@@ -27,7 +27,7 @@ export const paintSlides = [
 
   {
     type: 'image',
-    src: '/Images/PlayerPaint.png',
+    src: './Images/PlayerPaint.png',
     caption: 'Designer tuning: paint tags/types/materials, rates, pool size.',
     related: [{ label: 'Designer Friendly & Scalable Systems', targetId: 'designer-scalable' }]
   },
