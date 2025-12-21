@@ -1,7 +1,7 @@
 export const paintSlides = [
     {
     type: 'video',
-    src: './Videos/Paint/Slideshow/GPNJ.mp4',
+    src: './public/Videos/Paint/Slideshow/GPNJ.mp4',
     caption: 'Bouncy green paint effect on player ',
     related: [{ label: 'Core Gameplay Loop & Paint Powers', targetId: 'core-loop' }]
   },
