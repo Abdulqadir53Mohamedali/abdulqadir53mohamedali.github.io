@@ -45,7 +45,6 @@
 //     ]
 //   }
 // })
-
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
@@ -71,3 +70,4 @@ export default defineConfig({
     ]
   }
 })
+
