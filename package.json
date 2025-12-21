@@ -4,9 +4,9 @@
     "vue": "^3.5.25"
   },
   "scripts": {
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build .",
-    "docs:preview": "vitepress preview"
+  "docs:dev": "vitepress dev docs",
+  "docs:build": "vitepress build docs",
+  "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
     "medium-zoom": "^1.1.0"
