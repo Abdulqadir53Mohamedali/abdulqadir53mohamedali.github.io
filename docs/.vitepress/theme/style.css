@@ -334,17 +334,16 @@
     display: flex;
   }
 }
-h2:nth-of-type(1) {
+#connect {
   display: none;
 }
 
-/* Show on mobile only */
+/* Show "Connect With Me" title on mobile only */
 @media (max-width: 960px) {
-  h2:nth-of-type(1) {
+  #connect {
     display: block;
   }
 }
-
 .home-btn-contact {
   display: none !important;
 }
