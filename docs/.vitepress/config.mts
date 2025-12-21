@@ -48,7 +48,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  base: '/abdulqadir53mohamedali.github.io/',
+  base: '/',
   title: "Abdulqadir Mohamedali Portfolio",
   description: "Game Dev Portfolio",
   appearance: 'force-dark',
