@@ -1,0 +1,75 @@
+/* ========== ABOUT ME SECTION ========== */
+
+.about-me {
+  width: 100%;
+  margin: var(--space-2xl) 0;
+  padding: 0 var(--content-side-padding);
+}
+
+.about-me-container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.about-me-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-lg) 0;
+  line-height: var(--line-height-tight);
+}
+
+.about-me-content {
+  display: flex;
+  flex-direction: column;
+  /* gap: var(--space-sm); */
+}
+
+.about-me-paragraph {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+/* ========== LINKS ========== */
+
+.about-me-link {
+  color: var(--color-brand-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  transition: color var(--transition-fast) var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+
+.about-me-link:hover {
+  color: var(--color-brand-secondary);
+  border-bottom-color: var(--color-brand-secondary);
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+  .about-me-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .about-me-paragraph {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 640px) {
+  .about-me {
+    margin: var(--space-xl) 0;
+  }
+
+  .about-me-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .about-me-paragraph {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-relaxed);
+  }
+}

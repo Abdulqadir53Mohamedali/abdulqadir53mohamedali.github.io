@@ -1,0 +1,203 @@
+/* ========== EXPERIENCE TIMELINE SECTION ========== */
+
+.experience {
+  width: 100%;
+  margin: var(--space-2xl) 0;
+  padding: 0 var(--content-side-padding);
+}
+
+.experience-container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+        /* margin-top: -30px; */
+
+}
+
+.experience-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-lg) 0;
+  line-height: var(--line-height-tight);
+}
+
+.experience-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* ========== EXPERIENCE CARD ========== */
+
+.experience-card {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-md);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal) var(--ease-out);
+}
+
+.experience-card:hover {
+  border-color: var(--color-brand-primary);
+  box-shadow: var(--shadow-lg);
+  background: var(--color-bg-card-hover);
+}
+
+/* Date/Duration Badge */
+.experience-date {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: var(--line-height-normal);
+  padding-top: var(--space-xs);
+}
+
+/* Content Section */
+.experience-content {
+  display: flex;
+  flex-direction: column;
+    margin-top: -30px;
+  /* gap: var(--space-); */
+}
+
+.experience-header {
+  display: flex;
+  flex-direction: column;
+  /* gap: var(--space-xs); */
+}
+
+.experience-title-item {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  transition: color var(--transition-normal) var(--ease-out);
+}
+
+.experience-card:hover .experience-title-item {
+  color: var(--color-brand-primary);
+}
+
+.experience-company {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Description/Bullets */
+.experience-description {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+
+}
+
+.experience-item {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  margin: 0;
+  /* padding-left: var(--space-lg); */
+  position: relative;
+  margin-top:-15px;
+}
+
+/* .experience-item::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--color-brand-primary);
+  font-weight: var(--font-weight-bold);
+} */
+
+/* Tech Tags */
+.experience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);      
+  margin-top: 8px;
+
+}
+
+.experience-tag {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-badge-bg);
+  color: var(--color-badge-text);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-badge-bg);
+  transition: all var(--transition-fast) var(--ease-out);
+}
+
+.experience-tag:hover {
+  background: var(--color-brand-primary);
+  color: var(--color-text-primary);
+  border-color: var(--color-brand-primary);
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+  .experience-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .experience-card {
+    grid-template-columns: 100px 1fr;
+    gap: var(--space-md);
+    padding: var(--space-md);
+  }
+
+  .experience-date {
+    font-size: var(--font-size-xs);
+  }
+
+  .experience-title-item {
+    font-size: var(--font-size-base);
+  }
+
+  .experience-item {
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 640px) {
+  .experience {
+    margin: var(--space-xl) 0;
+  }
+
+  .experience-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+  }
+
+  .experience-date {
+    font-size: var(--font-size-xs);
+    padding-top: 0;
+  }
+
+  .experience-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .experience-title-item {
+    font-size: var(--font-size-base);
+  }
+
+  .experience-item {
+    font-size: var(--font-size-xs);
+    padding-left: var(--space-md);
+  }
+
+  .experience-tags {
+    gap: var(--space-xs);
+  }
+}
