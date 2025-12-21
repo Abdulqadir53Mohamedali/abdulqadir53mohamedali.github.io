@@ -51,7 +51,7 @@ export default defineConfig({
   base: '/abdulqadir53mohamedali.github.io/',
   title: "Abdulqadir Mohamedali Portfolio",
   description: "Game Dev Portfolio",
-  appearance: 'dark',
+  appearance: 'force-dark',
 
   themeConfig: {
     nav: [
