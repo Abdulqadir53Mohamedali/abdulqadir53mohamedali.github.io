@@ -14,7 +14,7 @@ import { StarWarsDungeonSlides,StarWarsDungeonProceduralSlides,StarWarsDungeonEn
 
 ## Overview
 ::: tip Context
-This project was a solo developed uiversity assigment , in which we were given 8 weeks to develop a text based game in pure C++, it was encoourgaed to go above & beyond what was taught in lesson
+This project was a solo developed uiversity assigment , in which we were given 8 weeks to develop a text based game in pure C++, it was encouraged to go above & beyond what was taught in lesson.
 :::
 
 <ProjectSlideshow :slides="StarWarsDungeonSlides" />

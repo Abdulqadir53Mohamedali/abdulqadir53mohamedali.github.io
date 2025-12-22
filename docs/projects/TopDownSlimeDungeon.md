@@ -13,7 +13,7 @@ import { TopDownSlimeSlides } from '../.vitepress/theme/data/projectSlides'
 
 ## Overview
 ::: tip Context
-This project was a university assigment , 8 weeks , we were given a 2D Top-down character framework, and other than some specfics given the freedom to use external assets and create enemies and objectives etc. Using external slime assets I created a 4 room slime dungeon, each room with their own unique slimes ( small , medium , boss)
+This project was a university assigment , 8 weeks , we were given a 2D Top-down character framework, and other than some specifics given the freedom to use external assets and create enemies and objectives etc. Using external slime assets ( only animation and sprite) ( code & systems all done by me) I created a 4 room slime dungeon, each room with their own unique slimes ( small , medium , boss) .
 :::
 <ProjectSlideshow :slides="TopDownSlimeSlides" />
 
