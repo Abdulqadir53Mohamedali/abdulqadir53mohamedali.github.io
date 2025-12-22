@@ -21,8 +21,7 @@ export const projects: Project[] = [
     category: "Academic",
     video:"/Videos/Paint/Thumbnail/PaintThumbnailTest2.mp4",
     image: "/images/CarlottaWuWaPlaceholder.png",
-    description: "A first-person UES prototype, where the player makes use of different paint colours to traverse the testing grounds",
-    tags: ["C++", "Unreal Engine", "Unreal Blueprints", "Jetbrains Rider"],
+    description: "A first-person UE5 prototype where you chain different paint powers to move, solve traversal puzzles, and clear a modular testing course built around scalable, data-driven systems.",    tags: ["C++", "Unreal Engine", "Unreal Blueprints", "Jetbrains Rider"],
     link: '/projects/Paint'
   },
   {
@@ -33,8 +32,7 @@ export const projects: Project[] = [
     category: "Academic",
         video:"/Videos/Splatoon/Thumbnail/SplatoonThumnail.mp4",
     image: "/images/CarlottaWuWaPlaceholder.png",
-    description: "A 2D side scroller where we were tasked with creating a charcter with an ability or two focusing on game juicines & feel ( Audio , Partilces , Smoothness)",
-    tags: ["C#", "Visual Studio 2022", "Unity"],
+ description: "A 2D platformer built around responsive movement, squid‑style wall/ground traversal, and a focus on “juice & feel” through tightly synced VFX, sound, dashes, and shooting feedback.",    tags: ["C#", "Visual Studio 2022", "Unity"],
     link: "/projects/Splatoon"
   },
    {
@@ -45,7 +43,7 @@ export const projects: Project[] = [
     category: "Academic",
     video:"/Videos/FM/Thumbnail/FMThumbnailTest.mp4",
     image: "/images/CarlottaWuWaPlaceholder.png",
-  description: "A 2D platformer prototype focused on forgiveness mechanics (jump buffer, coyote time, variable jump height etc) with event-driven checkpoints, respawns, and interactions.",
+  description: "A 2D platformer prototype focused on forgiveness mechanics (jump buffer, coyote time, variable jump height etc) with event-driven (& coroutine) checkpoints, respawns, and interactions.",
     tags: ["C#","Unity", "Visual Studio 2022"],
     link: "/projects/ForgivenessMechanics"
   }
@@ -68,8 +66,8 @@ export const projects: Project[] = [
     category: "Academic",
             video:"/Videos/StarWarsDungeon/Thumbnail/TextBasedGameThumbnail.mp4",
     image: "/images/StarWarsDungeon/FinsheGame.png",
-    description: "A memory efficient & robust pure C++ star wars inspired procedural text based dungeon ,with a shop, randomised enemy positions, and waves every run , visual dot grid and coins",
-    tags: ["C++", "Visual Studio 2022"],
+description:
+  "A pure C++, Star‑Wars‑inspired procedural text dungeon that uses a dot‑grid map, random enemy waves and postioning, a coin‑driven shop and inventory system, built to be memory‑safe and input‑robust.",    tags: ["C++", "Visual Studio 2022"],
     link: "/projects/StarWarsDungeon"
   }  , {
     id: 6,
@@ -79,7 +77,7 @@ export const projects: Project[] = [
     category: "Academic",
     video:"/Videos/TopDownSlime/Thumbnail/SlimeDungeonThumbnail.mp4",
     image: "/images/CarlottaWuWaPlaceholder.png",
-description: "A 2D top-down dungeon brawler with four rooms of slime encounters, featuring projectile debuffs, trap-spawning bosses, stamina-based dash, and a lure ability to manage enemy pressure.",
+description: "A 2D top-down dungeon with four rooms of slime encounters, featuring projectile debuffs, trap-spawning bosses, stamina-based dash, and a lure ability to manage enemy pressure.",
     tags: ["C#","Unity", "Visual Studio 2022"],
     link: "/projects/TopDownSlimeDungeon"
   } ,  
@@ -91,7 +89,7 @@ description: "A 2D top-down dungeon brawler with four rooms of slime encounters,
     category: "Academic",
         video:"/Videos/OneButtonChallenge/Thumbnail/OneButtonPrototypeThumbnail.mp4",
     image: "/images/CarlottaWuWaPlaceholder.png",
-    description: "A 3-week prototpye where we were challenged with makign multiple mechanics all through one button",
+    description: "A 3‑week 2D platformer prototype built around a one‑button challenge, where the Spacebar contextually controls double jumps, swinging, wall jumps, and Mario‑style stomp attacks.",
     tags: ["C#","Unity", "Visual Studio 2022"],
     link: "/projects/OneButtonPrototype"
   }

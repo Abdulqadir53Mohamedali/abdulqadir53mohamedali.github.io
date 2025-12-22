@@ -29,7 +29,7 @@ Mechanics included:
 
 ## Highlights
 
-<CollapseSection sectionId = "SpacebarRules"title="One-Button Design (Spacebar Rules)" icon="□">
+<CollapseSection sectionId = "SpacebarRules"title="One-Button Design (Spacebar Rules)" icon="▸">
 
 This prototype was built around a strict constraint: **only one extra key (Spacebar)** could drive multiple mechanics. To make that work, Space is treated as a **context-sensitive action**.
 
@@ -39,7 +39,7 @@ This prototype was built around a strict constraint: **only one extra key (Space
 The goal was to keep it readable: *one input*, but the player can still predict what will happen based on their current state and position.
 </CollapseSection>
 
-<CollapseSection sectionId = "PlayerToolkit"title="Traversal Toolkit (Double Jump / Swing / Wall Jump)" icon="□">
+<CollapseSection sectionId = "PlayerToolkit"title="Traversal Toolkit (Double Jump / Swing / Wall Jump)" icon="↕">
 
 This project is essentially a small **movement playground** where the player chains traversal tools to progress:
 
@@ -56,7 +56,7 @@ This project is essentially a small **movement playground** where the player cha
 
 ## General
 
-<CollapseSection sectionId = "EnemyStomp"title="Enemy Prototype (Stomp Kill + Simple Patrol AI)" icon="□">
+<CollapseSection sectionId = "EnemyStomp"title="Enemy Prototype (Stomp Kill + Simple Patrol AI)" icon="✚">
 
 - Enemies are intentionally simple: they **patrol left/right**, and the player can only defeat them by **jumping on top** (Mario-style).
 - **enemy senses via tag and normal detection**.   
@@ -65,3 +65,11 @@ This project is essentially a small **movement playground** where the player cha
 
 **Media suggestion:** 1 short gif showing a stomp kill + enemy patrol loop.
 </CollapseSection>
+
+## External Assets Used
+<CollapseSection title="External Assets" icon="✎">
+
+- City & Sky background: https://free-game-assets.itch.io/free-city-backgrounds-pixel-art
+
+</CollapseSection>
+

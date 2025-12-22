@@ -73,6 +73,7 @@
     margin-top: -30px;
 
   gap: var(--space-xs);
+  
 }
 
 .education-title-item {
@@ -93,6 +94,9 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   margin: 0;
+    font-size: var(--font-size-base);
+
+
   
 }
 
@@ -103,6 +107,7 @@
   color: var(--color-text-secondary);
   line-height: var(--line-height-normal);
   margin: 0;
+  
   
 }
 

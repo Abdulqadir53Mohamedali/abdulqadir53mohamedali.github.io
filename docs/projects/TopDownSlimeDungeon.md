@@ -46,7 +46,7 @@ A **4-room top-down dungeon** built around **readable combat pressure** and **si
 <!-- <CollapseSection title="Room Design + Slime Progression (4 Rooms)" icon="□">
 </CollapseSection> -->
 
-<CollapseSection sectionId = "SmallSlime" title="Small Slime Projectile Debuffs (Freeze / Slow / Poison / Invert)" icon="□">
+<CollapseSection sectionId = "SmallSlime" title="Small Slime Projectile Debuffs (Freeze / Slow / Poison / Invert)" icon="✜">
 
 Each small slime fires a unique projectile that applies a **short, readable debuff**. These are designed to create quick “oh no” moments that force different reactions.
 
@@ -58,7 +58,7 @@ Each small slime fires a unique projectile that applies a **short, readable debu
 
 Below is the **Poison projectile → DoT coroutine** flow. The projectile script (`SmallSlimeGreenProjectile`) applies the effect, while `HealthManager` owns the ticking damage logic:
 
-<CodeCollapseSection title="Code snippet example from project" icon="□">
+<CodeCollapseSection title="Code snippet example from project" icon="⌘">
 
 ```csharp
 // SmallSlimeGreenProjectile.cs (Poison)
@@ -113,7 +113,7 @@ private IEnumerator Damage(float damage, float tickRate, int maxTicks)
 </CollapseSection>
 
 
-<CollapseSection title="Player Kit + Lure Ability (Crowd Control)" icon="□">
+<CollapseSection title="Player Kit + Lure Ability (Crowd Control)" icon="⚔">
 
 **Player tools**
 - **Fire Damage projectile:** main attack for normal slimes & boss damage.
@@ -138,7 +138,7 @@ private IEnumerator Damage(float damage, float tickRate, int maxTicks)
   :autoplayInView="true"
   caption="Knockback Projectile"
 />
-<CodeCollapseSection title="Knockback Code snippet" icon="□">
+<CodeCollapseSection title="Knockback Code snippet" icon="⌘">
 
 ```csharp
 // KnockbackProjectile.cs (core idea)
@@ -166,7 +166,7 @@ private void OnTriggerEnter2D(Collider2D collision)
 - `LureSpawner`: cooldown + spawn + waypoint assignment
 - `LureMonster`: movement between waypoints + lifetime + collision damage
 
-<CodeCollapseSection title="Lure code snippet" icon="□">
+<CodeCollapseSection title="Lure code snippet" icon="⌘">
 
 ```csharp
 // LureSpawner.cs
@@ -220,7 +220,7 @@ public class LureSpawner : MonoBehaviour
 
 </CollapseSection>
 
-<CollapseSection sectionId = "Medium&Boss"title="Medium + Boss Combat Loop" icon="□">
+<CollapseSection sectionId = "Medium&Boss"title="Medium + Boss Combat Loop" icon="♜">
 
 - **Medium slimes:**  
   **Spin** applies continuous damage pressure, while **Chomp** punishes close-range mistakes with burst damage.
@@ -241,5 +241,16 @@ public class LureSpawner : MonoBehaviour
 
 - **Pressure rule:**  
 `RoomSpawner` keeps a target population alive and uses `m_kingSlime.OnBossDeath` event to shut everything down cleanly.
+</CollapseSection>
+
+
+## External Assets Used
+<CollapseSection title="External Assets" icon="✎">
+
+- Small Slimes : https://chiecola.itch.io/momo-mama-slime
+- Medium Slimes : https://chiecola.itch.io/momo-mama-slime
+- Boss Slims: https://snowhex.itch.io/dungeon-gathering-zombie-exp
+
+
 </CollapseSection>
 <!-- npm run docs:dev -->

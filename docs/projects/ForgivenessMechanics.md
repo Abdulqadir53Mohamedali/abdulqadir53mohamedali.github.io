@@ -35,7 +35,7 @@ This movement training build Systems/features:
 
 ## Technical Highlights
 
-<CollapseSection sectionId = "FmExplantion" title="Forgiveness Mechanics Movement Stack" icon="□">
+<CollapseSection sectionId = "FmExplantion" title="Forgiveness Mechanics Movement Stack" icon="↕">
 
 **1. Jump Buffering (early input help)**  
 If the player presses jump *just before* landing, I store that input briefly (`jumpBufferTime`) and trigger the jump as soon as grounded. This removes the “my input didn’t register” frustration on fast platforming.
@@ -49,7 +49,7 @@ Releasing the jump early cuts upward velocity (`velocity.y *= 0.5f`), giving the
 **4. Crouch On Ledge**  
 Holding Control and then looking of the side of a ledge / corner without falling off , like **minecrafts** crouch on block.
 
-<CodeCollapseSection title="Crouch on ledge visualised via debug lines of the raycsts" icon="□">
+<CodeCollapseSection title="Crouch on ledge visualised via debug lines of the raycsts" icon="⌘">
 
 <ProjectMedia
   type="video"
@@ -76,7 +76,7 @@ These aren’t independent “features” — they cover different failure cases
 - crouch on ledge = **control on tight areas / platforms / small platforms**
 - Semi Solid Platoforms = ****
 
-<CodeCollapseSection title="Code Snippet — Jump buffer + variable jump height" icon="□">
+<CodeCollapseSection title="Code Snippet — Jump buffer + variable jump height" icon="⌘">
 
 ```csharp
 // CharacterMovement (trimmed)
@@ -129,7 +129,7 @@ private IEnumerator JumpBufferRoutine()
 
 </CollapseSection>
 
-<CollapseSection title="Coroutine-Driven Architecture (No Update)" icon="□">
+<CollapseSection title="Coroutine-Driven Architecture (No Update)" icon="⟳">
 
 **Fixed-step movement loop (horizontal)**  
 Horizontal movement runs in a dedicated coroutine (`C_MoveUpdate()`), applying acceleration/deceleration in **FixedUpdate timing** via `WaitForFixedUpdate()`. This keeps movement consistent and avoids scattered “if input then…” checks across scripts.
@@ -146,7 +146,7 @@ Instead of constantly checking conditions, systems broadcast events and listener
 
 That separation keeps responsibilities clean: **input forwards intent → movement applies rules → UI/game systems react to events**.
 
-<CodeCollapseSection title="Code Snippet — Coroutines + event wiring (no Update loops)" icon="□">
+<CodeCollapseSection title="Code Snippet — Coroutines + event wiring (no Update loops)" icon="⌘">
 
 ```csharp
 // PlayerCamera (trimmed)
@@ -203,7 +203,7 @@ private IEnumerator TimerLoop()
 </CodeCollapseSection>
 </CollapseSection>
 
-<CollapseSection title="Event-Driven Game Loop (Respawn / Timer / Checkpoints)" icon="□">
+<CollapseSection title="Event-Driven Game Loop (Respawn / Timer / Checkpoints)" icon="⇆">
 
 **Player spawn → safe setup (no race conditions)**  
 `GameManager` spawns the player, then immediately broadcasts `PlayerInitializer.BroadcastPlayerReady(player)`. Any script that needs references (input, movement, camera, UI listeners) waits for `OnPlayerReady`, so respawns don’t break wiring.
@@ -238,7 +238,7 @@ When the player hits the void, `GroundCheck` triggers `PlayerEnteredVoid`, and `
 **Why this matters:**  
 This setup makes the project robust under respawns: systems don’t rely on fragile scene references, and the “test loop” (fail → respawn → retry) stays stable while tuning movement.
 
-<CodeCollapseSection title="Code Snippet — Spawn → broadcast → checkpoint → respawn (event-driven)" icon="□">
+<CodeCollapseSection title="Code Snippet — Spawn → broadcast → checkpoint → respawn (event-driven)" icon="⌘">
 
 ```csharp
 // GameManager (trimmed)
@@ -295,7 +295,7 @@ public void RespawnPlayer()
 
 ## General
 
-<CollapseSection title="Input System + Interaction Layer" icon="□">
+<CollapseSection title="Input System + Interaction Layer" icon="⌨">
 
 **How it’s structured**
 - **Move / Jump / Crouch:** `InputHandler` calls into `CharacterMovement` (`SetInMove`, `JumpPerformed`, `JumpCancelled`, `CrouchPerformed`).
@@ -319,7 +319,7 @@ Interaction uses a small interface so any object can opt-in:
 
 This keeps the project clean: **input reads controls → broadcasts/forwards intent → gameplay systems decide the rules.**
 
-<CodeCollapseSection title="Code Snippet — Interaction via interface (no hard references)" icon="□">
+<CodeCollapseSection title="Code Snippet — Interaction via interface (no hard references)" icon="⌘">
 
 ```csharp
 // InputHandler (trimmed)
@@ -341,7 +341,7 @@ private void Handle_InteractPerformed(InputAction.CallbackContext context)
 </CodeCollapseSection>
 </CollapseSection>
 
-<CollapseSection title="Grounding & Platform Rules (GroundCheck / Drop-through / Void)" icon="□">
+<CollapseSection title="Grounding & Platform Rules (GroundCheck / Drop-through / Void)" icon="▣">
 
 **GroundCheck (reliable grounding)**
 - Tracks `groundContacts` so ground state doesn’t flicker.
@@ -372,7 +372,7 @@ This keeps the behaviour local to the platform, not hardcoded into the player.
 - `GroundCheck` also detects the void layer and triggers `PlayerEnteredVoid` (delayed by 1 frame so checkpoint updates can process first).
 - `GameManager` listens and respawns the player at the current checkpoint position, then re-wires subscriptions cleanly for the new spawned instance.
 
-<CodeCollapseSection title="Code Snippet — Ground contacts + delayed void event" icon="□">
+<CodeCollapseSection title="Code Snippet — Ground contacts + delayed void event" icon="⌘">
 
 ```csharp
 // GroundCheck (trimmed)
@@ -419,7 +419,7 @@ private IEnumerator DelayedVoidInvoke()
 </CodeCollapseSection>
 </CollapseSection>
 
-<CollapseSection title="UI Systems (Timer / End Screen / Pause)" icon="□">
+<CollapseSection title="UI Systems (Timer / End Screen / Pause)" icon="»">
 
 **Timer (live + best time)**
 - `TimerManager` (persistent singleton) tracks `CurrentTime` and saves `BestTime` using `PlayerPrefs`.

@@ -8,17 +8,18 @@ export interface Experience {
 }
 
 export const experiences: Experience[] = [
-  {
-    id: 1,
-    date: "SEP 2024",
-    title: "Junior Software Engineer",
-    company: "Sidefest | De-Montfort University",
-    description: [
-      "Developed a prototype open day app for the university , using Agile Methodolgy , UI & UX design, 4 different teams , I was 3D modelling & Animation team lead ( based on vote), ",
-      "The Development team creeatign the actual open day app exmained ours to see how peole our age viewed and tookon this priject ot then ensure the best / most optimal open day app was created for the university , 316 hours in total"
-    ],
-    tags: ["Blender", "Unity"]
-  }
+{
+  id: 1,
+  date: "SEP 2024",
+  title: "Junior Software Engineer",
+  company: "Sidefest | De Montfort University",
+  description: [
+    "Led the 3D modelling and animation team on a T-Level project to prototype a De Montfort University open day app, collaborating with 4–5 specialist student teams (audio, programming, UI/UX).",
+    "Created low-poly humanoid models, rigged and animated them in Blender, and supported Unity implementation by helping set up the character controller for map navigation.",
+    "Coordinated task distribution, and provided daily and weekly progress updates to the project supervisor across a 316-hour mandatory placement."
+  ],
+  tags: ["Blender", "Unity"]
+}
   // },
   // {
   //   id: 2,

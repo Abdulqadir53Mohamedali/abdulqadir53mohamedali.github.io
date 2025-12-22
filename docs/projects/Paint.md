@@ -38,7 +38,7 @@ This Testing Environment features a series of systems
 
 ## Highlights
 
-<CollapseSection sectionId="core-loop" title="Core Gameplay Loop & Paint Powers" icon="■">
+<CollapseSection sectionId="core-loop" title="Core Gameplay Loop & Paint Powers" icon="➤">
 
 **Core loop:** pick a paint type → shoot surfaces → the environment + player movement changes → use that change to reach the next Checkpoint / interaction.
 
@@ -85,7 +85,7 @@ This Testing Environment features a series of systems
   - register it in `PaintEffectClasses` on `UPlayerPaintReactionComponent`.
 - The gameplay code stays **designer-friendly** because most tuning values are exposed with `UPROPERTY(EditDefaultsOnly)` (multipliers, cooldowns, allowed behaviours, etc).
 
-<CodeCollapseSection title="Code Snippet" icon="□">
+<CodeCollapseSection title="Code Snippet" icon="⌘">
 
 ```cpp
  
@@ -110,12 +110,12 @@ This Testing Environment features a series of systems
 
 ### Feedback & readability
 - Paint type changes are reflected through **surface visuals (materials/decals)** and **player response**, so the player learns by doing/progressing.
-- Abilities are **surface-driven** , so the surface in which a pain decal is applied determines whether it effeects or helps the player
+- Abilities are **surface-driven** , so the surface in which a pain decal is applied determines whether it effects or helps the player
 
 <!-- Paste your final version we wrote together here (keep your wording). -->
 </CollapseSection>
 
-<CollapseSection sectionId="arch-perf" title="Architecture (Design Patterns) & Performance" icon="■">
+<CollapseSection sectionId="arch-perf" title="Architecture (Design Patterns) & Performance" icon="⚙">
 
 This project fires a lot of paint projectiles and creates a lot of short-lived “impact” logic, so I focused on performance patterns that keep gameplay smooth and predictable as the level gets larger.
 
@@ -141,7 +141,7 @@ When you **spawn and destroy** lots of actors every second, you can cause small 
   - an inactive decal from `AvailableDecals`, or  
   - recycling the **oldest** one from `ActiveDecals` if the pool is exhausted.
 
-<CodeCollapseSection title="Code Snippet" icon="□">
+<CodeCollapseSection title="Code Snippet" icon="⌘">
 
 ```cpp
  
@@ -186,7 +186,7 @@ In my case, this is used to keep paint surface collision manageable:
 - So `APaintZoneManager` partitions decals into grid cells (`FIntPoint`) + `EPaintType`, meaning logic can reason about the  “local” paint zones.
   - This keeps zone tracking scalable and gives a foundation for optimisations like “merge colliders when dense
 
-<CodeCollapseSection title="Code Snippet" icon="□">
+<CodeCollapseSection title="Code Snippet" icon="⌘">
 
 ```cpp
  
@@ -274,9 +274,8 @@ void APaintGun::HandleFire()
 </CodeCollapseSection>
 
 This structure makes it easy to add future weapons (or alternate paint tools) without duplicating core weapon code — the shared behaviour stays in the base class, while each weapon overrides only what it needs (projectile type, fire behaviour, cooldown rules, UI hooks).
-<!-- Paste your final version we wrote together here (keep your wording). -->
 
-<CodeCollapseSection title="Other architecture choices that support performance" icon="□">
+<CodeCollapseSection title="Other architecture choices that support performance" icon="⌘">
 
 - `UTurretWorldManage`r is a `UWorldSubsystem` that tracks turrets using `TWeakObjectPtr` to avoid hard ownership and to stay safe if actors are destroyed.
 
@@ -287,7 +286,7 @@ This structure makes it easy to add future weapons (or alternate paint tools) wi
 
 </CollapseSection>
 
-<CollapseSection sectionId="designer-scalable" title="Designer Friendly & Scalable Systems" icon="■">
+<CollapseSection sectionId="designer-scalable" title="Designer Friendly & Scalable Systems" icon="✚">
 
 ### Making C++ systems “designer-owned”
 
@@ -309,7 +308,7 @@ The paint gun is written in C++ (`APaintGun`), but most gameplay tuning is edito
 <ProjectSlideshow :slides="DesignPaintSlides " />
 
 
-<CodeCollapseSection title="PaintGun exposes tuning values (designer-friendly C++)" icon="□">
+<CodeCollapseSection title="PaintGun exposes tuning values (designer-friendly C++)" icon="⌘">
 
 ```cpp
 // APaintGun.h (trimmed)
@@ -335,7 +334,7 @@ int32 PoolSize = 200;
   src="/Images/PaintPics/DataAsstes.png"
   caption="Data Assets , create new ones which inherit from base C++ classes and plug an play in to other blueprints"
 />
-<CodeCollapseSection title="Exmaple" icon="□">
+<CodeCollapseSection title="Exmaple" icon="⌘">
 
 - `UCollectibleData` → mesh, points, type, pickup SFX
 - `UPickupData` → type, value, mesh, glow, weapon class/data
@@ -347,7 +346,7 @@ int32 PoolSize = 200;
 ### Health Compoent + Destructable Wall
 
 <ProjectSlideshow :slides="DesignHealthPaintSlides " />
-<CodeCollapseSection title="Code View" icon="□">
+<CodeCollapseSection title="Code View" icon="⌘">
 
 ```cpp
 // UHealthComponent.h (trimmed)
@@ -385,7 +384,7 @@ FOnStopFlashing OnStopFlashing;
 
 ## General
 
-<CollapseSection sectionId="level-interaction" title="Level Interaction" icon="■">
+<CollapseSection sectionId="level-interaction" title="Level Interaction" icon="✦">
 
 ### Checkpoint
 
@@ -401,7 +400,7 @@ FOnStopFlashing OnStopFlashing;
 - It broadcasts `OnCheckpointReached(Index, this)` which `ATrainingCourseGameMode` listens to (so the checkpoint doesn’t need to know about GameMode logic).
 - `ActivateCheckpoint()` handles *feedback* (Niagara + sound) and prevents re-trigger spam.
 
-<CodeCollapseSection title="Checkpoint - broadcast + activate (trimmed)" icon="□">
+<CodeCollapseSection title="Checkpoint - broadcast + activate (trimmed)" icon="⌘">
 
 ```cpp
 // ACheckpoint::OnPlayerEnterInteractionZone (trimmed)
@@ -431,7 +430,7 @@ UGameplayStatics::PlaySoundAtLocation(this, CheckpointSound, GetActorLocation())
 -Turrets register/unregister themselves on BeginPlay/EndPlay (no manual wiring per level).
 
 <ProjectSlideshow :slides="LevelInteractionTurretButtonSlides" />
-<CodeCollapseSection title="Turret Button Communication Code Snippet" icon="□">
+<CodeCollapseSection title="Turret Button Communication Code Snippet" icon="⌘">
 
 ```cpp
 // ATurretButton::OnButtonPressed_Implementation (trimmed)
@@ -468,7 +467,7 @@ for (TWeakObjectPtr<ABaseTurret> Turret : ActiveTurrets)
   caption="Collectible"
 />
 
-<CodeCollapseSection title="Collectible Code Snippet" icon="□">
+<CodeCollapseSection title="Collectible Code Snippet" icon="⌘">
 
 ```cpp
 // ADataDrivenBaseCollectible::OnPlayerEnterInteractionZone (trimmed)
@@ -498,7 +497,7 @@ Destroy();
 
 <ProjectMedia
   type="video"
-  src= "/Videos/Paint/DropDowns/HealthPickup.mp4"
+  src= "/Videos/Paint/DropDowns/HealthPickUp.mp4"
   :autoplayInView="true"
   caption="Health Pickup"
 />
@@ -506,7 +505,7 @@ Destroy();
 <!-- Paste your final version here -->
 </CollapseSection>
 
-<CollapseSection sectionId="interfaces-abstraction" title="Interfaces / Abstraction Choices" icon="■">
+<CollapseSection sectionId="interfaces-abstraction" title="Interfaces / Abstraction Choices" icon="↔">
 
 ### IIAInterface
 - Input Action interface 
@@ -515,7 +514,7 @@ Destroy();
 <!-- Paste your final version here -->
 </CollapseSection>
 
-<CollapseSection sectionId="materials-vfx" title="Materials & VFX" icon="■">
+<CollapseSection sectionId="materials-vfx" title="Materials & VFX" icon="✧">
 
 ### Paint Decal Materials
 <ProjectMedia
@@ -551,7 +550,7 @@ Destroy();
 <!-- Short section: 1 master material screenshot + 1–2 gifs for VFX (checkpoint, flashing destructible). -->
 </CollapseSection>
 
-<CollapseSection sectionId="audio" title="Audio (Click Unmute)" icon="■">
+<CollapseSection sectionId="audio" title="Audio (Click Unmute)" icon="♪">
 
 ---
 ### Collectible
@@ -594,12 +593,9 @@ Destroy();
 <!-- Keep short. Mention: green paint bounce, checkpoint, collectibles, turret + button. -->
 </CollapseSection>
 
----
-
-
 ## Lessons Learned
 
-This project reinforced how important it is to balance **scope vs. polish**. The core mechanics (**paint effects**, **object pooling**, **modular components**, **UI feedback**) came together quickly, but I learned that traversal/puzzle gameplay lives or dies on **iteration** — **clear visual communication**, **consistent rules**, and repeated **playtesting + tuning** often take longer than implementing the mechanics themselves.
+This project reinforced how important it is to balance **scope vs. polish**. The core mechanics (**paint effects**, **object pooling**, **modular components**, **UI feedback**) came together quickly, but I learned that traversal/puzzle gameplay lives or dies on **iteration** - **clear visual communication**, **consistent rules**, and repeated **playtesting + tuning** often take longer than implementing the mechanics themselves.
 
 My biggest technical takeaway was the value of **building for extension early**. By structuring paint behaviour as **data-driven effects** + **reusable components** (rather than hardcoding per-actor logic), I ended up with systems that are easy to **scale**: new **paint types**, **surface rules**, **interactables**, or **reactions** can be added by creating a new **class/data asset** and wiring it up, without rewriting the existing **gameplay loop**.
 

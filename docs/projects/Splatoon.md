@@ -49,7 +49,7 @@ To prevent infinittly firing , I made it so spraying / shooting consumes **shoot
 - drains while shooting, regenerates when not shooting  
 - broadcasts `OnShootingEnergyChanged` every update for UI  
 - broadcasts `OnShootingEnergyDepleted` when it hits zero (to force stop / feedback)
-<CodeCollapseSection title="Shooting Energy drain / regen (snippet)" icon="□">
+<CodeCollapseSection title="Shooting Energy drain / regen (snippet)" icon="⌘">
 
 ```csharp
 // ShootingEnergyController::FixedUpdate (trimmed)
@@ -120,7 +120,7 @@ Squid Mode is a distinct traversal state, not just an energy bar:
   - otherwise falls (gravity-like behaviour).
 - It triggers UI offset events so dash/afterimage visuals align with the lower squid body.
 
-<CodeCollapseSection title="Squid Mode: gated entry + coroutine-driven movement" icon="□">
+<CodeCollapseSection title="Squid Mode: gated entry + coroutine-driven movement" icon="⌘">
 
 ```csharp
 // SquidController.EnterSquidMode (trimmed)
@@ -281,7 +281,7 @@ I use a small **queue-based pool** (pre-created objects) and reuse them:
 - Afterimages copy the **current sprite + flipX** from the animator controller, so the trail matches the current animation frame.
 - Offsets are adjusted depending on squid mode (events request new Y offsets), keeping the trail aligned even when the player’s silhouette changes.
 
-<CodeCollapseSection title="Code Snippet — 8-direction dash + pooled afterimages" icon="□">
+<CodeCollapseSection title="Code Snippet — 8-direction dash + pooled afterimages" icon="⌘">
 
 ```csharp
 // DashController.cs (trimmed)
@@ -426,7 +426,16 @@ private void SpawnAfterimage()
 <!-- Paste your final version here -->
 </CollapseSection>
 
-### What I learned
+## External Assets Used
+<CollapseSection title="External Assets" icon="✎">
+
+- Character Sprite Sheet: https://www.deviantart.com/friendalias/art/Inkling-Girl-Mini-Sprite-Sheet-740153891
+- Sounds: https://sounds.spriters-resource.com/wii_u/splatoon/
+- City & Sky background: https://free-game-assets.itch.io/free-city-backgrounds-pixel-art
+
+</CollapseSection>
+
+## What I learned
 This project helped me understand that “game feel” is not one feature — it’s a **stack of small systems working together**:
 
 - **Feedback layering matters**: the same mechanic feels completely different once it has clear VFX timing, sound cues, and readable lighting.

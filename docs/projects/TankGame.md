@@ -45,7 +45,7 @@ Everything was built in **Blueprints**, with readability supported through **imp
 
 ## Highlights
 
-<CollapseSection sectionId = "Weapons" title="Weapon Pickups + Firing Feel (4 weapon types)" icon="★">
+<CollapseSection sectionId = "Weapons" title="Weapon Pickups + Firing Feel (4 weapon types)" icon="✹">
 
 The player can swap between multiple pickup weapons, each built to feel distinct in pacing and feedback:
 - **Standard fire** (baseline consistent weapon)
@@ -68,7 +68,7 @@ The player can swap between multiple pickup weapons, each built to feel distinct
 
 </CollapseSection>
 
-<CollapseSection title="Enemy Variety + Threat Roles" icon="★">
+<CollapseSection title="Enemy Variety + Threat Roles" icon="⚔">
 
 Enemy variety is using a mix of any two or more mentioned below
 - **Chasers / shooters:** keep the player moving
@@ -100,7 +100,7 @@ Enemy variety is using a mix of any two or more mentioned below
 
 </CollapseSection>
 
-<CollapseSection sectionId= "Boss&Command"title="Boss + Commander Design" icon="★">
+<CollapseSection sectionId= "Boss&Command"title="Boss + Commander Design" icon="♛">
 
 <!-- Progression is built around **commander minibosses** that teach patterns, leading into a **final boss** that combines multiple threats: -->
 - Multi-turret firing patterns (layered projectiles)
@@ -123,7 +123,7 @@ Enemy variety is using a mix of any two or more mentioned below
 
 ## General
 
-<CollapseSection sectionId = "Enviroment&Interactables"title="Environment Interactables + Hazards" icon="□">
+<CollapseSection sectionId = "Enviroment&Interactables"title="Environment Interactables + Hazards" icon="▣">
 
 The level includes hazards and interactables that support the combat loop:
 - **Explosive barrels:** radial damage + chain reactions  
@@ -145,7 +145,7 @@ The level includes hazards and interactables that support the combat loop:
 
 </CollapseSection>
 
-<CollapseSection title="Combat Feedback + VFX Readability" icon="□">
+<CollapseSection title="Combat Feedback + VFX Readability" icon="✧">
 
 Readability was reinforced through fast, clear feedback:
 - Projectile **impact VFX** across weapons
@@ -154,7 +154,7 @@ Readability was reinforced through fast, clear feedback:
 
 </CollapseSection>
 
-<CollapseSection title="Level Structure + Testing Arena Workflow" icon="□">
+<CollapseSection title="Level Structure + Testing Arena Workflow" icon="▵">
 
 The project is split into:
 - A **testing arena** to quickly validate weapons, enemies, and hazards  

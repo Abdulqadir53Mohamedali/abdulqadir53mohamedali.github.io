@@ -38,7 +38,7 @@ states)
 
 ## Highlights
 
-<CollapseSection sectionId= "DungeonGrid" title="Procedural Dungeon Grid + Encounters" icon="□">
+<CollapseSection sectionId= "DungeonGrid" title="Procedural Dungeon Grid + Encounters" icon="▦">
 
 - The dungeon is a **12×12 dot grid** (`config::GRID_SIZE`) rendered in console (`displayGrid()`), with:
   - `P` = player start  
@@ -49,7 +49,7 @@ states)
 - Enemy encounter positions are generated using a `std::set<Position>` so positions are **unique by default**.
 - Spawns avoid key tiles (player start + goal), preventing unfair/buggy setups:
   - `(0,0)` and `(GRID_SIZE-1, GRID_SIZE-1)` are excluded.
-<CodeCollapseSection title="Code Snippet - Unique enemy spawns (std::set + excluded tiles)" icon="□">
+<CodeCollapseSection title="Code Snippet - Unique enemy spawns (std::set + excluded tiles)" icon="⌘">
 
 ```cpp
 // Grid.cpp (trimmed)
@@ -82,7 +82,7 @@ std::set<Position> generateEnemyPositions(int count) {
 This creates a simple but replayable overworld: the player explores, hits random encounters, and pushes toward the exit.
 </CollapseSection>
 
-<CollapseSection sectionId = "WaveSystem"title="Wave Combat System (Turn-Based + Randomised Enemies)" icon="□">
+<CollapseSection sectionId = "WaveSystem"title="Wave Combat System (Turn-Based + Randomised Enemies)" icon="♺">
 
 - Encounters trigger combat via the grid: stepping onto an enemy tile calls `combatWave(player, wave)`.
 - Waves are created with `generateEnemyWave(5)` and enemies are **randomly selected**, meaning you rarely fight the same composition twice.
@@ -90,7 +90,7 @@ This creates a simple but replayable overworld: the player explores, hits random
   - Player chooses an inventory item (weapon / power-up)
   - Enemies take their turn one-by-one
   - Defeated enemies are removed using `erase(remove_if(...))`
-<CodeCollapseSection title="Code Snippet - Turn loop + remove defeated enemies + wave rewards" icon="□">
+<CodeCollapseSection title="Code Snippet - Turn loop + remove defeated enemies + wave rewards" icon="⌘">
 
 ```cpp
 // Combat.cpp (trimmed)
@@ -128,11 +128,11 @@ if (player.getHealth() > 0) {
 It’s a strong “game loop” showcase: encounter → combat → reward → prepare for next wave.
 </CollapseSection>
 
-<CollapseSection sectionId = "ShopInventory"title="Shop + Inventory (Polymorphism + Smart Pointers)" icon="□">
+<CollapseSection sectionId = "ShopInventory"title="Shop + Inventory (Polymorphism + Smart Pointers)" icon="₵">
 
 - Inventory is stored as `std::map<int, std::unique_ptr<Item>>`, so items are owned safely and cleaned up automatically.
 - The shop uses a **factory approach**: each `ShopItem` stores a `std::function<std::unique_ptr<Item>()>` so buying an item creates the correct derived type at runtime.
-<CodeCollapseSection title="Code Snippet - Shop factory (std::function → std::unique_ptr<Item>)" icon="□">
+<CodeCollapseSection title="Code Snippet - Shop factory (std::function → std::unique_ptr<Item>)" icon="⌘">
 
 ```cpp
 // Shop.cpp (trimmed)
@@ -162,7 +162,7 @@ std::map<int, ShopItem> shop = {
 
 
 ## General
-<CollapseSection title="Weapons + Ammo / Reload Rules" icon="□">
+<CollapseSection title="Weapons + Ammo / Reload Rules" icon="✹">
 
 - Weapons track `damage`, `currentAmmo`, `ammoCapacity`, and `mags`.
 - Reloading happens automatically when ammo hits zero (if mags remain).
@@ -171,7 +171,7 @@ std::map<int, ShopItem> shop = {
 
 </CollapseSection>
 
-<CollapseSection title="Error Handling & Input Validation" icon="□">
+<CollapseSection title="Error Handling & Input Validation" icon="⌯⌲">
 
 - Input is validated using helper functions:
   - whitespace trimming (`trimWhiteSpace`)
@@ -181,7 +181,7 @@ std::map<int, ShopItem> shop = {
 - Inventory decisions enforce safe states (can’t return to game with no weapon).
 
 This kept the project stable — no crashing or broken states from bad input.
-<CodeCollapseSection title="Code Snippet — Input cleaning + numeric validation (prevents broken states)" icon="□">
+<CodeCollapseSection title="Code Snippet — Input cleaning + numeric validation (prevents broken states)" icon="⌘">
 
 ```cpp
 // GeneralErrorHandaling.cpp (trimmed)
