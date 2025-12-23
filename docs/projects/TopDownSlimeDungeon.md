@@ -6,7 +6,7 @@ import { TopDownSlimeSlides } from '../.vitepress/theme/data/projectSlides'
 </script>
 
 <ProjectHero
-  title="Top-Down Slime Dungeon"
+  title="Slime Dungeon Combat System"
   role="Solo Programmer"
   tools="C#,Unity Visual Studio 2022"
 />

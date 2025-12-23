@@ -7,7 +7,7 @@ import { splatoonSlides } from '../.vitepress/theme/data/projectSlides'
 </script>
 
 <ProjectHero
-  title="Splatoon Juice and Feel"
+  title="2D Movement , Juice & Feel"
   role="Solo Programmer | VFX | Lighting"
   tools="C#,Unity , Visual Studio 2022"
 />

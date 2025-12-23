@@ -9,7 +9,7 @@ import { paintSlides, DesignPaintSlides ,DesignHealthPaintSlides,LevelInteractio
 </script>
 
 <ProjectHero
-  title="Paint Training Course"
+  title="Paint Mechanics System"
   role="Sole Programmer"
   tools="C++, Unreal Engine 5, Unreal Blueprints, JetBrains Rider"
 />

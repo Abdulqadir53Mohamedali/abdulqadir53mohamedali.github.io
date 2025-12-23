@@ -6,7 +6,7 @@ import { FMSlides } from '../.vitepress/theme/data/projectSlides'
 </script>
 
 <ProjectHero
-  title="Forgiveness Mechanics"
+  title="Platformer Forgivness Mechanics"
   role="Sole Programmer"
   tools="C#,Unity , Visual Studio 2022"
 />

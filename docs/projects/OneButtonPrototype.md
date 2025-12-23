@@ -6,7 +6,7 @@ import { OneButtonPrototypeSlides } from '../.vitepress/theme/data/projectSlides
 </script>
 
 <ProjectHero
-  title="One-Button Prototype"
+  title="Contextual Input Platformer"
   role="Solo Programmer"
   tools="C#,Unity , Visual Studio 2022"
 />

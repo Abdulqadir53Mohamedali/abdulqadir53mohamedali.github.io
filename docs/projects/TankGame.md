@@ -8,7 +8,7 @@ import { TankGameSlides,TankGameDropdownBossSlides  } from '../.vitepress/theme/
 
 
 <ProjectHero
-  title="Third person Tank Game"
+  title="Tank Combat Encounters"
   role="Solo Programmer"
   tools="Unreal Engine 5.4 • Unreal Blueprints • Visual Studio 2022"
 />

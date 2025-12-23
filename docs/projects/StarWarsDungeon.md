@@ -7,7 +7,7 @@ import { StarWarsDungeonSlides,StarWarsDungeonProceduralSlides,StarWarsDungeonEn
 
 
 <ProjectHero
-  title="Procedural Star Wars Text Based Dungeon"
+  title="Procedural Dungeon Generator (Star-Wars Themed)"
   role="Solo Programmer"
   tools="C++, Visual Studio 2022"
 />
