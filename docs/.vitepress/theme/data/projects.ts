@@ -15,7 +15,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Paint Training Course",
+    title: "Paint Mechanics System",
     date: "November 2025",
     featured: true,
     category: "Academic",
@@ -26,7 +26,7 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Splatoon Inspired, Juice & Feel",
+    title: "2D Movement , Juice & Feel",
     date: "November 2025",
     featured: true,
     category: "Academic",
@@ -37,7 +37,7 @@ export const projects: Project[] = [
   },
    {
     id: 3,
-    title: "Forgivness Mechanics",
+    title: "Platformer Forgivness Mechanics",
     date: "November 2025",
     featured: true,
     category: "Academic",
@@ -49,7 +49,7 @@ export const projects: Project[] = [
   }
  ,  {
     id: 4,
-    title: "Tank Game",
+    title: "Tank Combat Encounters",
     date: "December 2024",
     featured: false,
     category: "Academic",
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     link: "/projects/TankGame"
   },{
     id: 5,
-    title: "Procedural Star Wars Text Based Dungeon",
+    title: "Procedural Dungeon Generator (Star-Wars Themed)",
     date: "November 2024",
     featured: false,
     category: "Academic",
@@ -71,7 +71,7 @@ description:
     link: "/projects/StarWarsDungeon"
   }  , {
     id: 6,
-    title: "Top-down slime dungeon",
+    title: "Slime Dungeon Combat System",
     date: "December 2024",
     featured: false,
     category: "Academic",
@@ -83,7 +83,7 @@ description: "A 2D top-down dungeon with four rooms of slime encounters, featuri
   } ,  
   {
     id: 7,
-    title: "One-Button Challenge",
+    title: "Contextual Input Platformer",
     date: "Febuary 2025",
     featured: false,
     category: "Academic",
