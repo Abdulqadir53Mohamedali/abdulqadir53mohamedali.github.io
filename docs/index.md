@@ -54,8 +54,5 @@ import HeroVideoBanner from './.vitepress/theme/components/HeroVideoBanner.vue'
     </svg>
     GitHub
 </a>
-<a href="/CV/AbdulqadirMohamedaliCV.pdf" class="social-btn CV-btn">
-    CV
-</a>
-  
+
 </div>
