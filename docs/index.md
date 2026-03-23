@@ -28,6 +28,7 @@ import HeroVideoBanner from './.vitepress/theme/components/HeroVideoBanner.vue'
   <p class="home-subtitle">Programmer , Game Developer & Student</p>
    <div class="home-actions">
     <a class="home-btn home-btn--primary" href="/projects/">View Projects</a>
+    <a class="home-btn" href="/public/CV/AbdulqadirMohamedaliCV.pdf">CV</a>
     <a class="home-btn" href="#about">About Me</a>
     <a class="home-btn" href="#experience">Experience</a>
     <a class="home-btn" href="#education">Education</a>
