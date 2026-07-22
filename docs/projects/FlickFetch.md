@@ -22,7 +22,7 @@ import { FlickFetchSlides, AiCompanionDropdownSlides, DebugCompanionSlides,Subst
 ## Overview
 ::: tip Context
 
-Flick & Fetch is a team developed cozy fossil mining game featuring environmental hazards, excavation mechanics and a museum progression system. I worked within the technical team and we recieved the **Best Mechanic Award**.
+Flick & Fetch is a team developed cozy fossil mining game featuring environmental hazards, excavation mechanics and a museum progression system,I worked within the technical team and we recieved the **Best Mechanic Award**
 
 :::
 
@@ -35,20 +35,20 @@ Flick & Fetch is a team developed cozy fossil mining game featuring environmenta
 
 My main responsibility was independently engineering and polishing several gameplay and visual systems:
 
-- **AI companion system** featuring state based movement, hovering, obstacle avoidance, catch-up and recovery behaviour.
-- **Companion driven lantern system** with proximity detection, gradual illumination, pulsing light and VFX feedback.
+- **AI companion system** featuring state based movement, hovering, obstacle avoidance, catch up and recovery behaviour
+- **Companion driven lantern system** with proximity detection, gradual illumination (sped up for final version), pulsing light and VFX feedback
 - **Reusable bridge mechanic** built with data-driven configuration and efficient timer based animation, though due to issues with the modelling the bridges were removed from the final build 
-- **Fire and smoke VFX**, alongside supporting textures created using Substance Designer and Photoshop.
-- Wider collaboration on debugging, gameplay integration and supporting systems including parts of the fossil mining mechanics , other VFX , and player movement .
+- **Fire and smoke VFX**, alongside supporting textures created using Substance Designer and Photoshop
+- Wider collaboration on debugging, gameplay integration and supporting systems including parts of the fossil mining mechanics , other VFX , and player movement 
 </div>
 
 ## Highlights
 
-<CollapseSection sectionId="core-loop" title="AI Companion Behaviour System" icon="➤">
+<CollapseSection sectionId="core-loop" title="AI Companion Behaviour System" icon="✦">
 
 The **companion** was designed to remain close to the player while still feeling like an independent, floating character rather than an object rigidly attached to them. 
 
-I implemented the movement and behaviour system in C++, with editor exposed values allowing its speed, positioning and hover motion to be tuned without changing code
+I implemented the movement and behaviour system in C++, with editor exposed values allowing its speed, positioning and hover motion to be tuned without touching the code
 
 ### State-Based Behaviour
 
@@ -63,13 +63,13 @@ The companion uses a lightweight state system, with each state representing a sp
 | `TeleportRecover` | Safely recovers when the companion becomes too far from the player |
 | `LanternLight` | Temporarily leaves the player to travel towards and activate a lantern |
 
-Separating these responsibilities made the companion easier to debug and extend. For example, the lantern behaviour could be added as another state without rewriting its normal following logic.
+Separating these responsibilities made the companion easier to debug and extend. For example, the lantern behaviour could be added as another state without rewriting its normal following logic
 
 ---
 
 ### Priority-Based Transitions
 
-Instead of controlling every state through one large chain of `if` statements or a large `switch`, I created a **priority-based transition table**.
+Instead of controlling every state through one large chain of `if` statements or a large `switch`, I created a **priority based transition table**.
 
 Each transition stores:
 
@@ -78,12 +78,9 @@ Each transition stores:
 - Its priority.
 - Whether it can be triggered from any state.
 
-Emergency recovery is checked first, followed by lantern interaction, obstacle handling and normal movement transitions.
-
 <CodeCollapseSection title="Priority-Based Transition Table" icon="⌘">
 
 ```cpp
-// Representative rules from ACompanion::BuildTransitionTable()
 
 // Highest priority: recover when too far away or blocked for too long
 TransitionTable.Add(FCompanionTransition(
@@ -153,17 +150,8 @@ This structure keeps the decision making readable and makes adding new behaviour
 ### Player Relative Movement & Hovering
 The companion follows a dedicated anchor attached to the player. Its offset is calculated using the anchor’s forward, right and up vectors, meaning the desired position remains relative to the player’s orientation.
 
-A sine-based vertical offset creates the floating motion, while VInterpConstantTo moves the companion towards its target at a stable speed.
+A sine based vertical offset creates the floating motion, while VInterpConstantTo moves the companion towards its target at a stable speed.
 
-The following properties are exposed to Unreal Engine for tuning:
-
-Follow, catch-up and idle speeds.
-Maximum movement speed.
-Catch-up and recovery distances.
-Side and vertical positioning.
-Hover height, amplitude and speed.
-Position tolerance to prevent small amounts of jitter.
-Reduced movement speed while affected by geyser hazards.
 
 <ProjectSlideshow :slides="AiCompanionDropdownSlides" />
 
@@ -173,7 +161,7 @@ Reduced movement speed while affected by geyser hazards.
 During development, I used debug visualisation to inspect the companion’s desired anchor, movement target and candidate positions. This helped identify problems such as wall clipping, movement jitter and the companion becoming separated from the player.
 
 <ProjectSlideshow :slides=" DebugCompanionSlides" />
-The system also includes distance-based recovery. If the companion becomes too far from its anchor, it returns to a suitable position near the player and resets its movement state.
+The system also includes distance based recovery. If the companion becomes too far from its anchor, it returns or teleports to a the suitable position
 
 <div style="width: 100%; margin: 1.25rem 0;">
   <iframe
@@ -201,7 +189,7 @@ The lantern mechanic gives the companion an active gameplay purpose. Instead of 
   type="video"
   src="/Videos/FLFN/Slideshow/LanternLighted.mp4"
   :autoplayInView="true"
-  caption="The player approaches an unlit lantern, prompting the companion to travel towards and activate it."
+  caption="The player approaches an unlit lantern, prompting the companion to travel towards and activate it"
 />
 
 ### Interaction Flow
@@ -209,16 +197,9 @@ The lantern mechanic gives the companion an active gameplay purpose. Instead of 
 The complete interaction is divided between the lantern and companion systems:
 
 **Player approaches lantern**  
-→ Lantern detects the player  
-→ `PlayerEntered` event is broadcast  
-→ Companion selects the lantern as its target  
-→ Companion enters `LanternLight` state  
-→ Companion travels towards the lantern  
-→ Lantern detects the companion  
-→ Light, audio and VFX activate  
-→ Companion returns to its normal following behaviour
-
-This event-driven flow allows the lantern to notify interested systems without directly controlling the companion itself.
+→ Lantern detects the player → `PlayerEntered` event  → selects the lantern as its target  →  enters `LanternLight` state  →  travels towards the lantern → Lantern detects the companion  → Light, audio and VFX activate → Companion returns to its normal behaviour
+ 
+Being event driven , means it notifies the subscribed systems without controlling the companion
 
 ---
 
@@ -226,15 +207,15 @@ This event-driven flow allows the lantern to notify interested systems without d
 
 Each lantern uses two trigger areas with different responsibilities:
 
-- **Outer trigger:** detects when the player is close enough to initiate the interaction.
-- **Inner trigger:** detects when the companion has reached the lantern and can activate it.
+- **Outer trigger:** detects when the player is close enough to initiate the interaction
+- **Inner trigger:** detects when the companion has reached the lantern and can activate it
 
 The trigger areas use interfaces to identify valid actors:
 
-- `UPCharacterInterface` identifies the player.
-- `UCompanionInterface` identifies the companion.
+- `UPCharacterInterface` identifies the player
+- `UCompanionInterface` identifies the companion
 
-This avoids requiring the lantern to cast to one specific player or companion class and makes the overlap checks easier to reuse.
+This avoids the lantern casting to a specfic player or companion class , & reuseable overlap checks
 
 <CodeCollapseSection title="Event-Driven Lantern Activation" icon="⌘">
 
@@ -287,7 +268,7 @@ When the first event is received, the companion stores the lantern as its curren
 
 ### Gradual Illumination and Light Pulse
 
-The lantern does not instantly jump from dark to fully illuminated. Activation begins a temporary timer that gradually increases the point light’s intensity.
+The final Lantern activates fast but is configureable to have a gradual activation
 
 SmoothStep eases the transition at the beginning and end, producing a more natural result than linear interpolation.
 
@@ -333,9 +314,9 @@ void ALantern::UpdateLanternBrightness()
 
 
 
-After reaching full brightness, the lantern begins a continuous pulse. A sine wave adjusts both the light intensity and attenuation radius between configurable minimum and maximum values. This adds subtle motion to the environment and prevents the activated lantern from appearing visually static
+Upon Activation, the lantern begins a continuous pulse. A sine wave adjusts both the light intensity and attenuation radius between configurable minimum and maximum values. adding subtle motion , which prevents the fire feel from appearing static
 
-<ProjectMedia type="video" src="/Videos/FLFN/Dropdowns/PulsingLantern.mp4" :autoplayInView="true" caption="Close-up of illumination, pulsing point light and accompanying lantern VFX." />
+<ProjectMedia type="video" src="/Videos/FLFN/Dropdowns/PulsingLantern.mp4" :autoplayInView="true" caption="Close up of illumination, pulsing point light and accompanying lantern VFX" />
  
 --- 
 ### Data-Driven Configuration
@@ -351,7 +332,7 @@ Additional properties expose the brighten duration, pulse speed, pulse strength 
 
 <ProjectMedia type="image" src="/Images/FLFN/Dropdowns/LanternDataAsset.png" caption="Lantern Data Asset and exposed lighting properties which can be used to cusotmise it " />
 
-By combining AI states, interfaces, delegates, collision triggers, audio and lighting feedback, the lantern became a complete environmental interaction rather than a simple switch.
+By combining AI states, interfaces, delegates, collision triggers, audio and lighting feedback, the lantern becomes / feels like a complete environmental interaction rather than a simple switch.
 
 
 </CollapseSection>
@@ -362,28 +343,13 @@ By combining AI states, interfaces, delegates, collision triggers, audio and lig
   icon="✧"
 >
 
-Alongside my programming responsibilities, I created textures and visual effects for the game’s environmental hazards, companion and lantern interactions. This allowed me to contribute to both the technical implementation and visual presentation of the project.
-
-### Environmental Fire and Smoke
-
-I created the fire and smoke effects used to communicate dangerous areas within the environment. The main challenge was making it recognisable while keeping them consistent with the game’s cosy visual style.
-
-I adjusted properties including:
-
-- Colour and brightness.
-- Particle movement and direction.
-- Scale and opacity over time.
-- Effect intensity and spawn timing.
-- The balance between the fire and surrounding smoke.
-
-in total I made 4 Niagara emitters : Fire | Static Fire | Smoke | Sparks
-
+Alongside my programming responsibilities, I created textures and visual effects for the companion & lantern interactions. This allowed me to contribute to both the technical implementation and visual presentation of the project.
 
 ---
 
 ### Texture Creation Workflow
 
-The supporting textures were created in **Substance Designer**, where I used a node-based workflow to build and adjust their shapes and patterns. This gave me non-destructive control over the texture and allowed individual values to be refined throughout development.
+The supporting textures were created in **Substance Designer**, where I used a node based workflow to build and adjust their shapes and patterns. This gave me non destructive control over the texture and allowed individual values to be refined throughout development
 
 The resulting textures were then adjusted and prepared in **Photoshop** before being imported into Unreal Engine and used within the final effects.
 
@@ -393,6 +359,26 @@ The resulting textures were then adjusted and prepared in **Photoshop** before b
 
 
 <ProjectSlideshow :slides="ActualTexturesForVFXBlur" />
+
+---
+
+In the UE VFX I adjusted properties including:
+
+- Colour and brightness
+- Particle movement and direction
+- Scale and opacity over time
+- Effect intensity and spawn timing
+- The balance between the fire and surrounding smoke
+
+in total I made 4 Niagara emitters for the companion : Fire | Static Fire | Smoke | Sparks
+
+for the lantern I made 3 Niagara emitters  : Fire | Static Fire | Sparks
+
+& Laslty I created 2 of the overall Geyser Emitters using materials made by other team memebers
+
+---
+
+
 
 
 <!-- Keep this comparison only if you have suitable before-and-after images. -->
@@ -413,7 +399,7 @@ Creating these effects gave me experience moving between texture creation, visua
 <CollapseSection
   sectionId="additional-contributions"
   title="Additional Gameplay and Team Contributions"
-  icon="⚙"
+  icon=""
 >
 
 ### Reusable Bridge System
@@ -454,21 +440,21 @@ The system was designed to support different bridge meshes, sizes and placements
 
 Each bridge references a `UBridgeDataConfig` Data Asset containing its:
 
-- Bridge mesh.
-- Activation sound.
-- Player interaction radius.
-- Fall duration.
+- Bridge mesh
+- Activation sound
+- Player interaction radius
+- Fall duration
 
 These values are applied during `OnConstruction()`, allowing changes to be previewed and adjusted within the editor.
 
-The bridge does not use a permanent `Tick()`. When activated, it temporarily starts a timer and uses `FQuat::Slerp` with `SmoothStep` easing to rotate between its starting position and the designer-defined `SnapTarget`.
+The bridge does not use a permanent `Tick()`. When activated, it temporarily starts a timer and uses `FQuat::Slerp` with `SmoothStep` easing to rotate between its starting position and the designer-defined `SnapTarget`
 
 <CodeCollapseSection title="Timer-Driven Bridge Movement" icon="⌘">
 
 ```cpp
 ABridge::ABridge()
 {
-    // The bridge does not require permanent per-frame updates
+    // The bridge does not require permanent per frame updates
     PrimaryActorTick.bCanEverTick = false;
 }
 
@@ -528,17 +514,17 @@ Once the movement finishes, the bridge snaps precisely to its target rotation, b
 
 ---
 
-### Technical Team Collaboration
+### Team Collaboration
 
 Alongside my independently developed **companion, lantern, bridge, texture and VFX work**, I contributed to the project as part of the wider technical team.
 
 My collaborative contributions included:
 
-- Assisting with gameplay debugging and integration.
-- Supporting elements of the fossil-mining minigame.
-- Helping team members investigate technical and visual issues.
-- Integrating work across C++, Unreal Blueprints and shared gameplay systems.
-- Working with programmers, artists and designers to improve the consistency and polish of the final game.
+- Assisting with gameplay debugging and integration
+- Supporting elements of the fossil mining minigame , A lot of ``Quality testing`` for the minigame was also done by me 
+- Helping team members investigate technical and visual issues ``(Spline / PCG issues, minigame , geyser ,Stalactite )``
+- Integrating work across C++, Unreal Blueprints and shared gameplay systems
+- Working with programmers, artists and designers to improve the consistency and polish of the final game
 
 Working across both independently owned and shared systems gave me experience communicating technical requirements, adapting my work around other disciplines and supporting features beyond my assigned responsibilities.
 
@@ -550,8 +536,3 @@ This project taught me how much **iteration and debugging** are required to make
 
 Working within a multidisciplinary team reinforced the importance of **clear ownership, communication and integration**. Using **states, interfaces, delegates and Data Assets** helped my independently developed systems connect with the wider project, while supporting shared mechanics taught me how to adapt and contribute beyond my assigned tasks.
 
-<!-- ---
-
-<div class="home-actions">
-    <a class="home-btn" href="/Awards/CollabCertificate.pdf">Best Mechanic Award</a>
-</div> -->

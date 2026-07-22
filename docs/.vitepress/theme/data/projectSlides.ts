@@ -79,20 +79,20 @@ export const AiCompanionDropdownSlides = [
   {
     type: 'image',
     src: '/Images/FLFN/Dropdowns/FullCOmpanioNObstacleChnagingVlaues.png',
-    caption: 'General Companion Editable Values',
+    caption: 'General Companion Tuneable Values',
 
   },
     {
     type: 'image',
     src: '/Images/FLFN/Dropdowns/HazaradCompanionValues.png',
-    caption: 'Hazard Companion Changeable Values',
+    caption: 'Hazard Companion Tuneable  Values',
 
 
   },
   {
     type: 'image',
     src: '/Images/FLFN/Dropdowns/LanternCompanionValues.png',
-    caption: 'Lantern Companion Changeable Values',
+    caption: 'Lantern Companion Tuneable  Values',
 
 
   },

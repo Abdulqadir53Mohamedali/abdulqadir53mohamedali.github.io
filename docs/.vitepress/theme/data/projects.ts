@@ -21,7 +21,7 @@ export const projects: Project[] = [
     category: "Academic",
     video:"/Videos/FLFN/Thumbnail/FFLFNVIDEO.mp4",
     image: "/images/CarlottaWuWaPlaceholder.png",
-    description: "A first-person UE5 prototype where you chain different paint powers to move, solve traversal puzzles, and clear a modular testing course built around scalable, data-driven systems.",    tags: ["C++", "Unreal Engine","Substance Designer", "Photoshop ","Unreal Blueprints", "Jetbrains Rider"],
+    description: "A Team developed cozy fossil mining game featuring environmental hazards, excavation mechanics and a museum progression system, recieved the Best Mechanic Award",    tags: ["C++", "Unreal Engine","Substance Designer", "Photoshop ","Unreal Blueprints", "Jetbrains Rider"],
     link: '/projects/FlickFetch'
   },
 
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     category: "Academic",
     video:"/Videos/AiScenes/AiThumnial&Showcase.mp4",
     image: "/images/CarlottaWuWaPlaceholder.png",
-    description: "A first-person UE5 prototype where you chain different paint powers to move, solve traversal puzzles, and clear a modular testing course built around scalable, data-driven systems.",    tags: ["C#","Unity", "Jetbrains Rider"],
+    description: "A Game Artificial Intelligence module , taught the theory then tasked with implementing Multiple Pathfinding algorithms ,Steering Bheaviours & Fuzzy logic. Then using all of them together in a final big combat scene",    tags: ["C#","Unity", "Jetbrains Rider"],
     link: '/projects/AiScenes'
   },
 {

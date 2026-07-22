@@ -17,7 +17,7 @@ import { AiScenesDebugVisualised,AiContextVideo } from '../.vitepress/theme/data
 ## Overview
 ::: tip Context
 
-This was an individual programming project completed within a university Game AI module using a provided Unity framework. I implemented pathfinding, steering and decision-making systems, culminating in an integrated AI combat scene.
+This was an individual programming project completed within a university Game AI module using a provided Unity framework with the bare bones. I implemented pathfinding, steering and decision-making systems, culminating in an integrated AI combat scene.
 
 :::
 
@@ -28,17 +28,17 @@ This was an individual programming project completed within a university Game AI
 
 <div class="project-overview">
 
-A collection of focused Unity scenes exploring game AI from its mathematical foundations through to practical agent behaviour. Each scene tested an individual technique before the systems were combined within a final decision-making simulation.
+A collection of focused Unity scenes exploring game AI from its mathematical foundations through to practical agent behaviour. Each scene tested an individual technique before the systems were combined within a final decision making simulation.
 
 The project features:
 
-- **Three grid-based pathfinding algorithms:** A*, Dijkstra’s algorithm and Jump Point Search.
-- A reusable **steering-behaviour framework**, including Seek, Flee, Arrive, Wander, Pursuit, Evade and flocking behaviours.
-- **Fuzzy scoring** driven by health, ammunition, enemy distance, enemy count and available pickups.
-- A central **AI Blackboard** that gathers and normalises information for decision-making.
-- A priority-based **Finite State Machine** with Explore, Combat, Resupply and Panic behaviours.
-- **Data-driven AI configuration** using ScriptableObjects, Animation Curves, weights and separate enter/exit thresholds.
-- Coordinated enemy behaviour that limits simultaneous zombie attacks and prevents unfair swarm damage.
+- **Three grid-based pathfinding algorithms:** A*, Dijkstra’s algorithm & Jump Point Search
+- A reusable **steering behaviour framework**, including Seek, Flee, Arrive, Wander, Pursuit, Evade and flocking behaviours
+- **Fuzzy scoring** driven by health, ammunition, enemy distance, enemy count and available pickups
+- A central **AI Blackboard** that gathers and normalises information for decision making
+- A priority based **Finite State Machine** with Explore, Combat, Resupply and Panic behaviours
+- **Data-driven AI configuration** using ScriptableObjects, Animation Curves, weights and separate enter/exit thresholds
+- Coordinated enemy behaviour that limits simultaneous zombie attacks and prevents unfair swarm damage
 </div>
 
 ## Highlights
@@ -46,18 +46,18 @@ The project features:
 <CollapseSection
   sectionId="PathfindingAlgorithms"
   title="Pathfinding Algorithms and Grid Search"
-  icon="➤"
+  icon="◆"
 >
 
-I implemented three grid-based pathfinding algorithms—**A\***, **Dijkstra’s algorithm** and **Jump Point Search**—using the same underlying node grid. Separate demonstration scenes allowed me to visualise how each algorithm explored the environment and responded to obstacles.
+I implemented three grid-based pathfinding algorithms: **A\***, **Dijkstra’s algorithm** and **Jump Point Search** - using the same underlying node grid. Separate demonstration scenes allowed me to visualise how each algorithm explored the environment and responded to obstacles.
 
 ### Algorithm Comparison
 
 | Algorithm | Node selection | Main characteristic |
 |---|---|---|
-| **Dijkstra** | Lowest accumulated cost (`gCost`) | Searches uniformly without using knowledge of the destination. |
-| **A\*** | Lowest combined cost (`gCost + hCost`) | Uses a heuristic to guide the search towards the destination. |
-| **Jump Point Search** | Lowest combined cost at selected jump points | Prunes unnecessary directions and skips intermediate nodes on uniform grids. |
+| **Dijkstra** | Lowest accumulated cost (`gCost`) | Searches uniformly without using knowledge of the destination |
+| **A\*** | Lowest combined cost (`gCost + hCost`) | Uses a heuristic to guide the search towards the destination |
+| **Jump Point Search** | Lowest combined cost at selected jump points | Prunes unnecessary directions and skips intermediate nodes on uniform grids |
 
 
 ---
@@ -66,15 +66,15 @@ I implemented three grid-based pathfinding algorithms—**A\***, **Dijkstra’s 
 
 All three algorithms inherit from a shared abstract `PathFinding` class. This provides:
 
-- Access to the current `GridNode` collection.
-- A shared list of generated path positions.
-- Optional diagonal movement and corner-cutting settings.
-- A maximum search count to prevent infinite searches.
-- Functions for retrieving and removing completed path points.
-- A shared location for heuristic calculations.
-- Optional grid-colour debugging.
+- Access to the current `GridNode` collection
+- A shared list of generated path positions
+- Optional diagonal movement and corner cutting settings
+- A maximum search count to prevent infinite searches
+- Functions for retrieving and removing completed path points
+- A shared location for heuristic calculations
+- Optional grid colour debugging
 
-Each algorithm implements its own version of `GeneratePath()`, while using the same grid and output format. This allowed agents to consume a generated path without needing to know which algorithm created it.
+Each algorithm implements its own version of `GeneratePath()`, while using the same grid and output format. Allowing agents to consume a generated path without needing to know which algorithm created it.
 
 ---
 
@@ -82,15 +82,15 @@ Each algorithm implements its own version of `GeneratePath()`, while using the s
 
 A* maintains two collections:
 
-- The **open list** contains discovered nodes that can still be explored.
-- The **closed list** contains nodes that have already been evaluated.
+- The **open list** contains discovered nodes that can still be explored
+- The **closed list** contains nodes that have already been evaluated
 
 Each node stores:
 
-- `gCost`: the travelled cost from the starting node.
-- `hCost`: the estimated remaining distance to the destination.
-- `fCost`: the combined value of `gCost + hCost`.
-- A parent reference used to reconstruct the final path.
+- `gCost`: the travelled cost from the starting node
+- `hCost`: the estimated remaining distance to the destination
+- `fCost`: the combined value of `gCost + hCost`
+- A parent reference used to reconstruct the final path
 
 The algorithm repeatedly selects the node with the lowest `fCost`, evaluates its walkable neighbours and updates the open list when a cheaper route is found.
 
@@ -112,7 +112,7 @@ The algorithm repeatedly selects the node with the lowest `fCost`, evaluates its
 <CodeCollapseSection title="A* Node Evaluation" icon="⌘">
 
 ```csharp
-// Select the open node with the lowest combined cost
+// Selects the open node with the lowest combined cost
 current = GetCheapestNode(openList);
 
 openList.Remove(current);
@@ -164,7 +164,7 @@ foreach (GridNode neighbour in current.node.Neighbours)
 ```
 
 ```csharp
-// Reconstruct the route by following parent references
+// Reconstructs the route by following parent references
 private void SetPath(NodeInformation end)
 {
     NodeInformation current = end;
@@ -175,7 +175,7 @@ private void SetPath(NodeInformation end)
         current = current.parent;
     }
 
-    // Parent traversal produces destination-to-start order
+    // Parent traversal produces destination to start order
     m_Path.Reverse();
 }
 ```
@@ -186,9 +186,9 @@ private void SetPath(NodeInformation end)
 
 ### Dijkstra’s Algorithm
 
-Dijkstra’s algorithm uses the same parent-based path reconstruction but selects nodes using only the accumulated travel cost.
+Dijkstra’s algorithm uses the same parent based path reconstruction but selects nodes using only the accumulated travel cost.
 
-Without a destination heuristic, the search expands uniformly from the starting node. This made it a useful baseline for understanding how A* reduces unnecessary exploration by including an estimated remaining distance.
+Without a destination heuristic, the search expands uniformly from the starting node. This made it a useful baseline for understanding how A* reduces unnecessary exploration by including an estimated remaining distance
 
 
 <div style="width: 100%; margin: 1.25rem 0;">
@@ -214,11 +214,11 @@ Jump Point Search builds on A*-style cost evaluation while reducing the number o
 
 Instead of evaluating every grid position individually, the algorithm:
 
-1. Prunes directions that cannot produce a useful route.
-2. Continues travelling in each remaining direction.
-3. Stops when it reaches an obstacle, the destination or a forced neighbour.
-4. Adds the resulting jump point to the open list.
-5. Uses `gCost + hCost` to decide which jump point to explore next.
+1. Prunes directions that cannot produce a useful route
+2. Continues travelling in each remaining direction
+3. Stops when it reaches an obstacle, the destination or a forced neighbour
+4. Adds the resulting jump point to the open list
+5. Uses `gCost + hCost` to decide which jump point to explore next
 
 A **forced neighbour** appears when an obstacle creates a potential turning opportunity. Detecting these positions is important because they may lead around an obstruction towards the destination.
 
@@ -249,7 +249,7 @@ private GridNode Jump(
     {
         GridNode next;
 
-        // Validate diagonal movement and corner-cutting rules
+        // Validates diagonal movement and corner cutting rules
         if (direction % 2 == 1)
         {
             if (!DiagonalAllowed(currentNode, direction))
@@ -311,13 +311,13 @@ private GridNode Jump(
 
 The pathfinding foundation exposes two movement options:
 
-- `m_AllowDiagonal` determines whether diagonal directions can be considered.
-- `m_CanCutCorners` determines whether a diagonal move can pass beside blocked adjacent tiles.
+- `m_AllowDiagonal` determines whether diagonal directions can be considered
+- `m_CanCutCorners` determines whether a diagonal move can pass beside blocked adjacent tiles
 
 For diagonal movement, the system checks the two neighbouring horizontal and vertical tiles:
 
-- With corner cutting enabled, at least one adjacent side must be open.
-- With corner cutting disabled, both adjacent sides must be open.
+- With corner cutting enabled, at least one adjacent side must be open
+- With corner cutting disabled, both adjacent sides must be open
 
 This prevents agents from travelling diagonally through solid corners while still allowing the movement rules to be adjusted for different games.
 
@@ -331,7 +331,7 @@ An optional debugging mode recolours grid nodes using the algorithm’s open and
 - How obstacles changed the resulting route.
 - How JPS pruning differed from standard A* exploration.
 
-These visualisations were essential for debugging the algorithms and understanding the practical differences between them beyond their theoretical definitions.
+These visualisations were essential for debugging the algorithms and understanding the practical differences between them beyond the theory.
 
 </CollapseSection>
 
@@ -341,33 +341,24 @@ These visualisations were essential for debugging the algorithms and understandi
   icon="◈"
 >
 
-The final Hero AI needed to evaluate several competing needs at the same time. Low health might encourage resupplying, but nearby enemies could make collecting a pickup too dangerous. I used a typed **Blackboard** and fuzzy scoring system to turn this changing gameplay context into four behavioural scores.
 
 **Environment and agent data**  
-→ `HeroBlackboard` gathers and normalises information  
-→ `HeroFuzzyEval` evaluates membership curves and weights  
-→ Explore, Combat, Resupply and Panic receive `0–1` scores  
-→ The FSM uses those scores to select a stable behaviour
+→ `HeroBlackboard` gathers and normalises information  → `HeroFuzzyEval` evaluates membership curves and weights  → Explore, Combat, Resupply and Panic receive `0–1` scores  → The FSM uses those scores to select a stable behaviour
 
 ---
 
 ### Centralised AI Blackboard
 
-`HeroBlackboard` provides one location for the information required by the Hero AI.
+`HeroBlackboard` provides one location for the information required by the Hero AI, no repeated component or world info search 
 
 It stores:
 
-- Current health and ammunition ratios.
-- Nearest enemy and its distance.
-- Number of detected enemies.
-- Health and ammunition pickup positions.
-- Whether each pickup still exists.
-- Cached references to movement, combat and health components.
-- References to the AI configuration and fuzzy-decision profile.
-
-Keeping this information in one component means the decision-making system does not need to repeatedly search for components or independently calculate the same world information.
-
-The Blackboard receives the current enemy collection from the provided framework, determines the nearest enemy and caches the results for the fuzzy evaluator.
+- Current health & ammunition ratios
+- Nearest enemy & its distance
+- Number of detected enemies
+- Health and ammunition PU positions & whtaher one still exisits
+- Cached references to movement, combat and health components
+- References to the AI configuration and fuzzy decision profile
 
 ---
 
@@ -377,13 +368,13 @@ Inputs with different units cannot be compared directly. Health, enemy distance 
 
 | Input | Normalised representation | Meaning |
 |---|---|---|
-| Health | `CurrentHealth / MaxHealth` | `0` is empty; `1` is full health. |
-| Ammunition | `CurrentAmmo / MaxAmmo` | `0` is empty; `1` is full ammunition. |
-| Enemy distance | `InverseLerp(minDistance, maxDistance, distance)` | `0` is close; `1` is far away. |
-| Enemy count | `EnemyCount / MaximumThreatCount` | Approaches `1` as the group becomes more dangerous. |
-| Pickups | Available or unavailable | Determines whether resupplying is currently possible. |
+| Health | `CurrentHealth / MaxHealth` | `0` is empty; `1` is full health |
+| Ammunition | `CurrentAmmo / MaxAmmo` | `0` is empty; `1` is full ammunition |
+| Enemy distance | `InverseLerp(minDistance, maxDistance, distance)` | `0` is close; `1` is far away |
+| Enemy count | `EnemyCount / MaximumThreatCount` | Approaches `1` as the group becomes more dangerous |
+| Pickups | Available or unavailable | Determines whether resupplying is currently possible |
 
-Normalisation allowed the same fuzzy profiles to operate consistently even when the underlying health, ammunition or distance values changed.
+Normalisation allowed the same fuzzy profiles to operate consistently even when the underlying health, ammunition or distance values changed
 
 ---
 
@@ -393,12 +384,12 @@ A `FuzzyDecisionSO` ScriptableObject stores the system’s membership curves, we
 
 The Animation Curves determine how strongly each input belongs to a fuzzy concept:
 
-- **Need Health:** becomes stronger as health decreases.
-- **Need Ammo:** becomes stronger as ammunition decreases.
-- **Threat by Distance:** becomes stronger as enemies move closer.
-- **Threat by Count:** becomes stronger as more enemies are detected.
+- **Need Health:** becomes stronger as health decreases
+- **Need Ammo:** becomes stronger as ammunition decreases
+- **Threat by Distance:** becomes stronger as enemies move closer
+- **Threat by Count:** becomes stronger as more enemies are detected
 
-The curves avoid relying entirely on rigid conditions such as “health below exactly 30%.” Instead, the importance of a need can increase gradually as the situation changes.
+The curves avoid relying entirely on rigid conditions such as "health below exactly 30%." Instead, the importance of a need can increase gradually as the situation changes.
 
 <ProjectMedia
   type="Image"
@@ -417,10 +408,10 @@ The evaluator produces four competing scores:
 
 | Score | Becomes stronger when |
 |---|---|
-| **Explore** | Threat is low and the Hero does not urgently need health or ammunition. |
-| **Combat** | A meaningful threat exists and the Hero is healthy enough to fight. |
-| **Resupply** | Health or ammunition is low, a relevant pickup exists and the current threat is manageable. |
-| **Panic** | The Hero has a strong health need while facing a significant threat. |
+| **Explore** | Threat is low and the Hero does not urgently need health or ammunition |
+| **Combat** | A meaningful threat exists and the Hero is healthy enough to fight |
+| **Resupply** | Health or ammunition is low, a relevant pickup exists and the current threat is manageable |
+| **Panic** | The Hero has a strong health need while facing a significant threat |
 
 Threat is calculated from both **enemy proximity** and **enemy count**. This allows the Hero to respond differently to one distant enemy, one nearby enemy or a surrounding group.
 
@@ -510,15 +501,13 @@ public static HeroFuzzyScores Evaluate(HeroBlackboard bb)
 
 </CodeCollapseSection>
 
-This is a fuzzy scoring system rather than a single hardcoded decision chain: multiple behaviours can have meaningful scores simultaneously, allowing the next decision layer to consider the Hero’s overall situation.
-
 ---
 
 ### Pickup Tracking and Validation
 
 The Blackboard subscribes to pickup events to receive the current health and ammunition pickup positions. Because the provided event did not identify which pickup had later been removed, I added validation using `Physics2D.OverlapCircle`.
 
-Before the Hero chooses to resupply, the Blackboard confirms that the target pickup still exists. It then prioritises health or ammunition based on the Hero’s current ratios and the configured low-resource thresholds.
+Before the Hero chooses to resupply, the Blackboard confirms that the target pickup still exists. It then prioritises health or ammunition based on the Hero’s current ratios and the configured resource thresholds
 
 ---
 
@@ -526,11 +515,11 @@ Before the Hero chooses to resupply, the Blackboard confirms that the target pic
 
 During development, I logged the active state alongside all four fuzzy scores and the Blackboard’s current values:
 
-- Explore, Combat, Resupply and Panic scores.
-- Health and ammunition ratios.
-- Nearest-enemy distance.
-- Detected enemy count.
-- Currently selected FSM state.
+- Explore, Combat, Resupply and Panic scores
+- Health and ammunition ratios
+- Nearest enemy distance
+- Detected enemy count
+- Currently selected FSM state
 
 
 <div style="width: 100%; margin: 1.25rem 0;">
@@ -591,28 +580,24 @@ The Hero’s decision-making is divided into four states:
 
 | State | Purpose | Resulting behaviour |
 |---|---|---|
-| `Explore` | No immediate threat or urgent resource need | Wanders through the environment. |
-| `Combat` | A viable enemy threat is present | Approaches, retreats, strafes and fires at the nearest enemy. |
-| `Resupply` | Health or ammunition is becoming low | Selects and travels towards the most appropriate available pickup. |
-| `Panic` | Low health is combined with significant danger | Flees from the nearest threat until the situation becomes safer. |
+| `Explore` | No immediate threat or urgent resource need | Wanders through the environment |
+| `Combat` | A viable enemy threat is present | Approaches, retreats, strafes and fires at the nearest enemy |
+| `Resupply` | Health or ammunition is becoming low | Selects and travels towards the most appropriate available pickup |
+| `Panic` | Low health is combined with significant danger | Flees from the nearest threat until the situation becomes safer |
 
-Each state is responsible for a clear high-level intention. The fuzzy system decides how desirable those intentions are, while the FSM provides stable state changes and the steering system handles movement.
+Each state is responsible for a clear high level intention. The fuzzy system decides how desirable those intentions are, while the FSM provides stable state changes and the steering system handles movement.
 
 ---
 
-### Priority-Based Transition Table
+### Priority Based Transition Table
 
 I used a transition table instead of placing all state changes inside one large conditional statement.
 
 Each transition contains:
 
-- A starting state.
-- A destination state.
-- A condition function.
-- A priority.
-- Support for transitions that can occur from any state.
+- A starting state | Destination state | Condition Function | Priority | Any State
 
-Transitions are sorted by priority, ensuring that emergency behaviour such as entering `Panic` is evaluated before lower-priority decisions.
+Transitions are sorted by priority, ensuring that emergency behaviour such as entering `Panic` is evaluated before lower priority decisions.
 
 <CodeCollapseSection title="FSM Transition Table" icon="⌘">
 
@@ -696,17 +681,15 @@ private Mode GetNextStateFromTable()
 
 </CodeCollapseSection>
 
-This structure made transition rules easier to inspect, reprioritise and extend without rewriting the state execution logic.
+This structure made transition rules easier to inspect, reprioritise and extend without rewriting the state execution logic
 
 ---
 
 ### Hysteresis and Stable Decisions
 
-Each behaviour has separate **enter** and **exit** thresholds. For example, the Hero might enter Combat when its score reaches `0.45`, but it will not leave until the score falls below `0.30`.
+Each behaviour has separate **enter** & **exit** thresholds exposed via `FuzzyDecisionSO` . For example, the Hero might enter Combat when its score reaches `0.45`, but it will not leave until the score falls below `0.30`.
 
 This gap is called **hysteresis**. It prevents the Hero from rapidly switching between states when a score repeatedly moves just above and below one boundary.
-
-The thresholds are exposed through `FuzzyDecisionSO`, allowing state stability to be tuned alongside the membership curves and score weights.
 
 <ProjectMedia
   type="Image"
@@ -719,14 +702,12 @@ The thresholds are exposed through `FuzzyDecisionSO`, allowing state stability t
 
 ### Combat Positioning
 
-Combat movement was designed to do more than directly seek the nearest enemy.
-
 The Hero calculates its distance from the target and compares it against configurable combat ranges:
 
-- When **too far away**, it approaches the enemy.
-- When **too close**, it retreats towards its preferred distance.
-- When near its **optimal range**, it calculates a perpendicular target and strafes around the enemy.
-- Its Cannon receives the nearest enemy as a target and only fires while the Hero is in Combat.
+- When **too far away**, it approaches the enemy
+- When **too close**, it retreats towards its preferred distance
+- When near its **optimal range**, it calculates a perpendicular target and strafes around the enemy
+- Its Cannon receives the nearest enemy as a target and only fires while the Hero is in Combat
 
 A buffer around the distance boundaries prevents movement from rapidly alternating between approach and retreat.
 
@@ -773,7 +754,7 @@ Zombies use a separate, more direct decision system:
 3. Attempt a melee attack when within attack range.
 4. Use Separation to reduce crowding while chasing.
 
-A shared `ZombieAttackCoordinator` limits how many Zombies can perform an attack simultaneously. Zombies must reserve an attack slot before starting their melee action and release it when the action finishes.
+A shared `ZombieAttackCoordinator` limits how many Zombies can perform an attack simultaneously. Zombies must reserve an attack slot before starting their melee action and release it when the action finishes
 
 <CodeCollapseSection title="Coordinated Zombie Attacks" icon="⌘">
 
@@ -832,15 +813,15 @@ Limiting simultaneous attackers prevented a surrounding group from applying all 
 
 The final scene demonstrates how several focused AI systems can combine into more complex behaviour:
 
-- The **Blackboard** gathers the Hero’s current context.
-- **Fuzzy scoring** measures its competing behavioural needs.
-- The **FSM** converts those scores into a stable decision.
-- **Steering behaviours** perform the required movement.
-- The **Cannon and melee systems** execute combat actions.
-- The **Zombie coordinator** controls group attack pressure.
-- **ScriptableObjects** expose the important balancing values.
+- The **Blackboard** gathers the Hero’s current context
+- **Fuzzy scoring** measures its competing behavioural needs
+- The **FSM** converts those scores into a stable decision
+- **Steering behaviours** perform the required movement
+- The **Cannon and melee systems** execute combat actions
+- The **Zombie coordinator** controls group attack pressure
+- **ScriptableObjects** expose the important balancing values
 
-This separation kept sensing, evaluation, decision-making and execution understandable while still allowing them to operate as one complete AI system.
+This separation kept sensing, evaluation, decision making and execution understandable while still allowing them to operate as one complete AI system.
 
 </CollapseSection>
 
@@ -852,20 +833,20 @@ This separation kept sensing, evaluation, decision-making and execution understa
   icon=""
 >
 
-Before building the final decision-making system, I implemented a reusable collection of steering behaviours. Each behaviour converts a movement intention into a steering force, allowing multiple behaviours to be activated, weighted and combined by the same movement framework.
+Before building the final decision making system, I implemented a reusable collection of steering behaviours. Each behaviour converts a movement intention into a steering force, allowing multiple behaviours to be activated, weighted and combined by the same movement framework.
 
 ### Reusable Steering Framework
 
 Every behaviour inherits from the abstract `SteeringBehaviour` class, which provides:
 
-- An active or inactive state.
-- A configurable behaviour weight.
-- Access to the agent’s `MovingEntity`.
-- Desired velocity and steering-force values.
-- A shared `CalculateForce()` interface.
-- Runtime Gizmo debugging.
+- An active or inactive state
+- A configurable behaviour weight
+- Access to the agent’s `MovingEntity`
+- Desired velocity and steering-force values
+- A shared `CalculateForce()` interface
+- Runtime Gizmo debugging
 
-This allowed different movement techniques to be added to an agent as components while sharing the same force-generation pipeline.
+This allowed different movement techniques to be added to an agent as components while sharing the same force generation pipeline
 
 <div style="width: 100%; margin: 1.25rem 0;">
   <iframe
@@ -884,13 +865,13 @@ This allowed different movement techniques to be added to an agent as components
 
 | Behaviour | Movement result |
 |---|---|
-| **Seek** | Accelerates towards a target position. |
-| **Flee** | Moves away when a threat enters a configurable radius. |
-| **Arrive** | Approaches a destination and gradually slows inside a stopping radius. |
-| **Wander** | Selects changing targets on a projected circle to create natural roaming. |
-| **Pursuit** | Predicts where a moving target will be and travels towards that future position. |
-| **Evade** | Predicts a threat’s future position and moves away from it. |
-| **Collision Avoidance** | Uses raycast feelers to detect obstacles and generate an avoidance force. |
+| **Seek** | Accelerates towards a target position |
+| **Flee** | Moves away when a threat enters a configurable radius |
+| **Arrive** | Approaches a destination and gradually slows inside a stopping radius |
+| **Wander** | Selects changing targets on a projected circle to create natural roaming |
+| **Pursuit** | Predicts where a moving target will be and travels towards that future position |
+| **Evade** | Predicts a threat’s future position and moves away from it |
+| **Collision Avoidance** | Uses raycast feelers to detect obstacles and generate an avoidance force |
 
 The behaviours calculate a desired velocity before subtracting the agent’s current velocity. This produces a steering force rather than directly setting the agent’s position.
 
@@ -927,9 +908,9 @@ When a feeler detects an obstacle, the system selects the closest collision poin
 
 I also implemented the three core flocking behaviours:
 
-- **Separation:** produces a repulsion force from nearby agents to prevent crowding.
-- **Cohesion:** calculates the group’s centre and steers towards it.
-- **Alignment:** averages neighbouring velocities so agents travel in a similar direction.
+- **Separation:** produces a repulsion force from nearby agents to prevent crowding
+- **Cohesion:** calculates the group’s centre and steers towards it
+- **Alignment:** averages neighbouring velocities so agents travel in a similar direction
 
 Each behaviour evaluates nearby agents within a configurable radius and field of view. Their forces can then be combined to produce group movement rather than relying on one monolithic flocking script.
 
@@ -958,7 +939,7 @@ Because each behaviour has its own weight, the group’s character can be change
 
 Each behaviour contributes its force until the configured maximum is reached. If the next force exceeds the remaining budget, it is normalised and truncated to use only the remaining amount.
 
-This allows important behaviours—such as Collision Avoidance—to be placed before lower-priority behaviours such as Wander.
+This allows important behaviours - such as Collision Avoidance - to be placed before lower priority behaviours such as Wander.
 
 <CodeCollapseSection title="Steering Force Accumulation" icon="⌘">
 
@@ -1003,7 +984,7 @@ public Vector2 GenerateSteeringForce()
 
 </CodeCollapseSection>
 
-The manager can also enable one behaviour exclusively or disable all behaviours, which is used by the higher-level decision-making system when switching between movement intentions.
+The manager can also enable one behaviour exclusively or disable all behaviours, which is used by the higher level decision making system when switching between movement intentions.
 
 ---
 
@@ -1011,25 +992,25 @@ The manager can also enable one behaviour exclusively or disable all behaviours,
 
 The steering systems use reusable vector operations including:
 
-- Magnitude and normalisation.
-- Dot products for directional and field-of-view checks.
-- Vector rotation for Wander targets, strafing and collision feelers.
-- Velocity prediction.
-- Weighted force accumulation.
+- Magnitude and normalisation
+- Dot products for directional and field-of-view checks
+- Vector rotation for Wander targets, strafing and collision feelers
+- Velocity prediction
+- Weighted force accumulation
 
 Runtime Gizmos display:
 
-- Desired velocity.
-- Current velocity.
-- Final steering direction.
-- Detection and slowing radii.
-- Wander circles and selected targets.
-- Collision-avoidance feelers.
+- Desired velocity
+- Current velocity
+- Final steering direction
+- Detection and slowing radii
+- Wander circles and selected targets
+- Collision avoidance feelers
 
 <ProjectSlideshow :slides="AiScenesDebugVisualised" />
 
 
-These visualisations made abstract vector calculations visible inside the scene, making it much easier to identify incorrect directions, unsuitable weights and conflicts between active behaviours.
+These visualisations made abstract vector calculations visible inside the scene, making it much easier to identify incorrect directions, unsuitable weights and any conflicts between active behaviours.
 
 </CollapseSection>
 
@@ -1038,5 +1019,5 @@ These visualisations made abstract vector calculations visible inside the scene,
 
 This project gave me a much deeper understanding of how game AI develops from **vector mathematics and search algorithms** into believable agent behaviour. Implementing A*, Dijkstra and Jump Point Search showed me how algorithm choice, heuristics and movement rules affect both path quality and the amount of work required to find it.
 
-My biggest takeaway was that complex behaviour can emerge by combining focused systems. The **Blackboard gathers context**, **fuzzy logic evaluates competing needs**, the **FSM provides stable decisions**, and **steering behaviours execute them through movement**. Debug visualisation and data-driven tuning were essential because believable AI depended as much on iteration and balancing as the underlying code.
+My biggest takeaway was that complex behaviour can emerge by combining focused systems. The **Blackboard gathers context**, **fuzzy logic evaluates competing needs**, the **FSM provides stable decisions**, and **steering behaviours execute them through movement**. Debug visualisation and data driven tuning were essential because believable AI depended as much on iteration & balancing as the underlying code.
 
