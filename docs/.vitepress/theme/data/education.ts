@@ -20,7 +20,7 @@ export const educations: Education[] = [
     id: 2,
     date: "SEP 2022 - JUN 2024",
     qualification: "T-Level , Digital Design Devleopment & Production",
-    institution: "Leiecter College",
+    institution: "Leicester College",
   description:"Completed a Level 3 T-Level in Digital Design, Development & Production, learning the languages listed below and studying both the front-end and back-end sides of web development, including security and database integration. Built several mini web applications (such as weather apps and Pokédex-style projects), and for the final exam designed and implemented a safari booking website with full documentation: user research, flowcharts, class diagrams, testing plans, evaluation and iteration. As part of the T-Level industry placement, completed a 316-hour project-based placement working in multidisciplinary teams to prototype a university open day app.",    
   tags: ["PHP", "HTML", "CSS","JS","Bootsrap","MySQL","Python"]
   }

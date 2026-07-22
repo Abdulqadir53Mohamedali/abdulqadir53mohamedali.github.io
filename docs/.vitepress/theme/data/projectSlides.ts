@@ -34,6 +34,142 @@ export const paintSlides = [
 
 ] as const
 
+export const FlickFetchSlides = [
+    {
+    type: 'video',
+    src: '/Videos/FLFN/Slideshow/CompanionFollowingPlayer.mp4',
+    caption: 'Normal Companion Following Player ',
+    related: [{ label: 'AI Companion Behaviour System', targetId: 'core-loop' }]
+  },
+     {
+    type: 'video',
+    src: '/Videos/FLFN/Slideshow/LanternLighted.mp4',
+    caption: 'Lighting Lantern.',
+    related: [{ label: 'Companion & Lantern Interactions', targetId: 'arch-perf' }]
+  },
+    {
+    type: 'image',
+    src: '/Images/FLFN/Slideshow/DebugCheckValid.png',
+    caption: 'Visulaised Companion Position Checking | Debug & Recovery',
+    related: [{ label: 'AI Companion Behaviour System', targetId: 'core-loop' }]
+  },
+      {
+    type: 'image',
+    src: '/Images/FLFN/Slideshow/ShowingDebugFurtherInvalid.png',
+    caption: 'Visulaised Companion Position Checking | Debug & Recovery',
+    related: [{ label: 'AI Companion Behaviour System', targetId: 'core-loop' }]
+  },
+ 
+    {
+    type: 'video',
+    src: '/Videos/FLFN/Slideshow/GenerlDropdownLinkFromSlideshow.mp4',
+    caption: 'Final Minigame & Geyser , Helped in Development & Testing process',
+    related: [{ label: 'Additional Gameplay & Team Contributions', targetId: 'additional-contributions' }]
+  },
+  {
+    type: 'image',
+    src: '/Images/FLFN/Slideshow/FireNoBlurSlideshow.png',
+    caption: 'Visulaised Companion Position Checking | Debug & Recovery',
+    related: [{ label: 'Fire | Smoke | Textures & VFX', targetId: 'textures-vfx' }]
+  },
+
+] as const
+
+export const AiCompanionDropdownSlides = [
+  {
+    type: 'image',
+    src: '/Images/FLFN/Dropdowns/FullCOmpanioNObstacleChnagingVlaues.png',
+    caption: 'General Companion Editable Values',
+
+  },
+    {
+    type: 'image',
+    src: '/Images/FLFN/Dropdowns/HazaradCompanionValues.png',
+    caption: 'Hazard Companion Changeable Values',
+
+
+  },
+  {
+    type: 'image',
+    src: '/Images/FLFN/Dropdowns/LanternCompanionValues.png',
+    caption: 'Lantern Companion Changeable Values',
+
+
+  },
+
+] as const
+
+export const DebugCompanionSlides = [
+  {
+    type: 'image',
+    src: '/Images/FLFN/Slideshow/ShowingDebugFurtherInvalid.png',
+    caption: 'Red Equals Invalid / Blocked Position',
+
+  },
+    {
+    type: 'image',
+    src: '/Images/FLFN/Slideshow/DebugCheckValid.png',
+    caption: 'Blue Implies Valid / Free / teleportable position',
+
+
+  },
+] as const
+
+export const SubstancePhotoshopVFXSlides = [
+  {
+    type: 'image',
+    src: '/Images/FLFN/Slideshow/FireNodeSubGraph.png',
+    caption: 'Fire texture graph',
+
+  },
+    {
+    type: 'image',
+    src: '/Images/FLFN/Slideshow/SmokeFireParticles.png',
+    caption: 'Smoke & flicker graph',
+
+
+  }
+] as const
+
+export const ActualTexturesForVFXBlur = [
+  {
+    type: 'image',
+    src: '/Images/FLFN/Dropdowns/ColouredFireBaseNoPhotoshopWITHgap.png',
+    caption: 'Fire texture',
+
+  },
+      {
+    type: 'image',
+    src: '/Images/FLFN/Dropdowns/ColouredFireWithGapPhotoshop.png',
+    caption: 'Fire texture',
+
+  },
+      {
+    type: 'image',
+    src: '/Images/FLFN/Dropdowns/GrayscaleDUSTfireNormalNoPhotoshop.png',
+    caption: 'Smoke & Sparks Texture',
+
+  },
+    {
+    type: 'image',
+    src: '/Images/FLFN/Dropdowns/GrayscaleDUSTfirePhotoshop.png',
+    caption: 'Smoke & Sparks Texture',
+
+  },
+      {
+    type: 'image',
+    src: '/Images/FLFN/Dropdowns/GrayScalePhotoshopNoGap.png',
+    caption: 'Fire texture',
+
+  },
+      {
+    type: 'image',
+    src: '/Images/FLFN/Dropdowns/GrayscaleFireBaseNoPhotoshopNOGap.png',
+    caption: 'Fire texture',
+
+  },
+] as const
+
 export const DesignPaintSlides = [
   {
         type: 'image',
