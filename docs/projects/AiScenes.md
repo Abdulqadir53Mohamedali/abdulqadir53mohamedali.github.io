@@ -5,7 +5,7 @@ pageClass: wide-doc
 ---
 
 <script setup lang="ts">
-import { paintSlides, DesignPaintSlides ,DesignHealthPaintSlides,LevelInteractionTurretButtonSlides} from '../.vitepress/theme/data/projectSlides'
+import { AiScenesDebugVisualised,AiContextVideo } from '../.vitepress/theme/data/projectSlides'
 </script>
 
 <ProjectHero
@@ -24,7 +24,7 @@ This was an individual programming project completed within a university Game AI
 
 
 
-<ProjectSlideshow :slides="paintSlides" />
+<ProjectSlideshow :slides="AiContextVideo" />
 
 <div class="project-overview">
 
@@ -44,7 +44,7 @@ The project features:
 ## Highlights
 
 <CollapseSection
-  sectionId="pathfinding-algorithms"
+  sectionId="PathfindingAlgorithms"
   title="Pathfinding Algorithms and Grid Search"
   icon="➤"
 >
@@ -59,13 +59,6 @@ I implemented three grid-based pathfinding algorithms—**A\***, **Dijkstra’s 
 | **A\*** | Lowest combined cost (`gCost + hCost`) | Uses a heuristic to guide the search towards the destination. |
 | **Jump Point Search** | Lowest combined cost at selected jump points | Prunes unnecessary directions and skips intermediate nodes on uniform grids. |
 
-Using the same grid structure made it easier to compare how much of the environment each algorithm explored before reaching the same destination.
-
-<ProjectMedia
-  type="image"
-  src="/Images/GameAI/Pathfinding/AlgorithmComparison.png"
-  caption="Comparison of Dijkstra, A* and Jump Point Search using the same start position, destination and obstacle layout."
-/>
 
 ---
 
@@ -101,12 +94,20 @@ Each node stores:
 
 The algorithm repeatedly selects the node with the lowest `fCost`, evaluates its walkable neighbours and updates the open list when a cheaper route is found.
 
-<ProjectMedia
-  type="video"
-  src="/Videos/GameAI/Pathfinding/AStar.mp4"
-  :autoplayInView="true"
-  caption="A* uses accumulated movement cost and a destination heuristic to guide its grid search."
-/>
+<div style="width: 100%; margin: 1.25rem 0;">
+  <iframe
+    src="https://www.youtube.com/embed/L9DFAE0HFRU?autoplay=1&mute=1&playsinline=1&loop=1&playlist=L9DFAE0HFRU"
+    title="Flick & Fetch development footage"
+    loading="lazy"
+    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+    allowfullscreen
+    style="width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px;"
+  ></iframe>
+
+  <p style="text-align: center; opacity: 0.8; margin-top: 0.5rem;">
+    <strong>A* Pathfinding</strong>
+  </p>
+</div>
 
 <CodeCollapseSection title="A* Node Evaluation" icon="⌘">
 
@@ -189,12 +190,21 @@ Dijkstra’s algorithm uses the same parent-based path reconstruction but select
 
 Without a destination heuristic, the search expands uniformly from the starting node. This made it a useful baseline for understanding how A* reduces unnecessary exploration by including an estimated remaining distance.
 
-<ProjectMedia
-  type="video"
-  src="/Videos/GameAI/Pathfinding/Dijkstra.mp4"
-  :autoplayInView="true"
-  caption="Dijkstra’s algorithm expands uniformly by repeatedly selecting the node with the lowest accumulated travel cost."
-/>
+
+<div style="width: 100%; margin: 1.25rem 0;">
+  <iframe
+    src="https://www.youtube.com/embed/QoE9YsnFUII?autoplay=1&mute=1&playsinline=1&loop=1&playlist=QoE9YsnFUII"
+    title="Dijkstra’s Footage"
+    loading="lazy"
+    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+    allowfullscreen
+    style="width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px;"
+  ></iframe>
+
+  <p style="text-align: center; opacity: 0.8; margin-top: 0.5rem;">
+    <strong>Dijkstra’s Algorithm</strong>
+  </p>
+</div>
 
 ---
 
@@ -212,12 +222,20 @@ Instead of evaluating every grid position individually, the algorithm:
 
 A **forced neighbour** appears when an obstacle creates a potential turning opportunity. Detecting these positions is important because they may lead around an obstruction towards the destination.
 
-<ProjectMedia
-  type="video"
-  src="/Videos/GameAI/Pathfinding/JumpPointSearch.mp4"
-  :autoplayInView="true"
-  caption="Jump Point Search prunes directions and travels across multiple grid positions before recording a significant jump point."
-/>
+<div style="width: 100%; margin: 1.25rem 0;">
+  <iframe
+    src="https://www.youtube.com/embed/MqmeSpjs7_k?autoplay=1&mute=1&playsinline=1&loop=1&playlist=MqmeSpjs7_k"
+    title="JPS Footage"
+    loading="lazy"
+    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+    allowfullscreen
+    style="width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px;"
+  ></iframe>
+
+  <p style="text-align: center; opacity: 0.8; margin-top: 0.5rem;">
+    <strong>JPS Algorithm</strong>
+  </p>
+</div>
 
 <CodeCollapseSection title="Jump Point Search" icon="⌘">
 
@@ -318,7 +336,7 @@ These visualisations were essential for debugging the algorithms and understandi
 </CollapseSection>
 
 <CollapseSection
-  sectionId="fuzzy-blackboard"
+  sectionId="FuzzyBlackboard"
   title="Fuzzy Logic and AI Blackboard"
   icon="◈"
 >
@@ -383,9 +401,10 @@ The Animation Curves determine how strongly each input belongs to a fuzzy concep
 The curves avoid relying entirely on rigid conditions such as “health below exactly 30%.” Instead, the importance of a need can increase gradually as the situation changes.
 
 <ProjectMedia
-  type="image"
-  src="/Images/GameAI/DecisionMaking/FuzzyDecisionProfile.png"
-  caption="Fuzzy Decision Profile exposing membership curves, score weights and separate state thresholds."
+  type="Image"
+  src="/Images/AiScenes/FuzzyDecisionSO.png"
+  :autoplayInView="true"
+  caption="Fuzzy Decision Scriptable Object"
 />
 
 Weights exposed through the ScriptableObject control how strongly each input influences the result. This made it possible to adjust the Hero’s personality and priorities through the Inspector rather than rewriting the evaluation code.
@@ -513,12 +532,21 @@ During development, I logged the active state alongside all four fuzzy scores an
 - Detected enemy count.
 - Currently selected FSM state.
 
-<ProjectMedia
-  type="video"
-  src="/Videos/GameAI/DecisionMaking/FuzzyScoreDebugging.mp4"
-  :autoplayInView="true"
-  caption="Live fuzzy scores responding to changes in health, ammunition, enemy distance and enemy count."
-/>
+
+<div style="width: 100%; margin: 1.25rem 0;">
+  <iframe
+    src="https://www.youtube.com/embed/f3_kTxNLUbI?autoplay=1&mute=1&playsinline=1&loop=1&playlist=f3_kTxNLUbI"
+    title="Flick & Fetch development footage"
+    loading="lazy"
+    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+    allowfullscreen
+    style="width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px;"
+  ></iframe>
+
+  <p style="text-align: center; opacity: 0.8; margin-top: 0.5rem;">
+    <strong>Live Fuzzy logic tweaking & it's effect on the AI</strong>
+  </p>
+</div>
 
 This made it possible to understand why the Hero selected a behaviour and to tune the curves, weights and thresholds using evidence from the running simulation.
 
@@ -527,7 +555,7 @@ The result was a configurable decision layer that could evaluate several changin
 </CollapseSection>
 
 <CollapseSection
-  sectionId="integrated-decision-making"
+  sectionId="IntegratedDecisionMaking"
   title="Integrated Decision-Making and Combat AI"
   icon="◆"
 >
@@ -540,12 +568,20 @@ The final scene combined the individual AI techniques developed throughout the m
 → State-specific steering and combat  
 → Agent movement and actions
 
-<ProjectMedia
-  type="video"
-  src="/Videos/GameAI/DecisionMaking/FinalDecisionMakingScene.mp4"
-  :autoplayInView="true"
-  caption="The final decision-making scene combining fuzzy scoring, state transitions, steering behaviours, combat and coordinated enemies."
-/>
+<div style="width: 100%; margin: 1.25rem 0;">
+  <iframe
+    src="https://www.youtube.com/embed/Gjv7jzrydk8?autoplay=1&mute=1&playsinline=1&loop=1&playlist=Gjv7jzrydk8"
+    title="Flick & Fetch development footage"
+    loading="lazy"
+    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+    allowfullscreen
+    style="width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px;"
+  ></iframe>
+
+  <p style="text-align: center; opacity: 0.8; margin-top: 0.5rem;">
+    <strong>Decision Making Scen</strong>
+  </p>
+</div>
 
 ---
 
@@ -673,10 +709,10 @@ This gap is called **hysteresis**. It prevents the Hero from rapidly switching b
 The thresholds are exposed through `FuzzyDecisionSO`, allowing state stability to be tuned alongside the membership curves and score weights.
 
 <ProjectMedia
-  type="video"
-  src="/Videos/GameAI/DecisionMaking/StateScoreDebugging.mp4"
+  type="Image"
+  src="/Images/AiScenes/FuzzyDecisionSO.png"
   :autoplayInView="true"
-  caption="The active Hero state and fuzzy scores changing as health, ammunition and surrounding threats change."
+  caption="Fuzzy Decision Scriptable Object"
 />
 
 ---
@@ -694,12 +730,20 @@ The Hero calculates its distance from the target and compares it against configu
 
 A buffer around the distance boundaries prevents movement from rapidly alternating between approach and retreat.
 
-<ProjectMedia
-  type="video"
-  src="/Videos/GameAI/DecisionMaking/CombatPositioning.mp4"
-  :autoplayInView="true"
-  caption="The Hero approaches, retreats and strafes to maintain a configurable combat distance."
-/>
+<div style="width: 100%; margin: 1.25rem 0;">
+  <iframe
+    src="https://www.youtube.com/embed/Gjv7jzrydk8?start=8&autoplay=1&mute=1&playsinline=1&loop=1&playlist=Gjv7jzrydk8"
+    title="Flick & Fetch development footage"
+    loading="lazy"
+    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+    allowfullscreen
+    style="width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px;"
+  ></iframe>
+
+  <p style="text-align: center; opacity: 0.8; margin-top: 0.5rem;">
+    <strong>0:08 - 0:16</strong>
+  </p>
+</div>
 
 This gives the Hero more believable combat movement than continuously travelling directly towards its opponent.
 
@@ -774,10 +818,10 @@ public void ReleaseAttackSlot()
 </CodeCollapseSection>
 
 <ProjectMedia
-  type="video"
-  src="/Videos/GameAI/DecisionMaking/ZombieCoordination.mp4"
+  type="Image"
+  src="/Images/AiScenes/ZombieConcurrentATtackers.png"
   :autoplayInView="true"
-  caption="Zombies chasing the Hero while the coordinator limits how many can attack simultaneously."
+  caption="Coordinator values in Inspector"
 />
 
 Limiting simultaneous attackers prevented a surrounding group from applying all of its damage at once and created a more controllable combat encounter.
@@ -803,9 +847,9 @@ This separation kept sensing, evaluation, decision-making and execution understa
 ## General
 
 <CollapseSection
-  sectionId="steering-and-maths"
+  sectionId="SteeringMaths"
   title="Steering Behaviours and AI Mathematics"
-  icon="↗"
+  icon=""
 >
 
 Before building the final decision-making system, I implemented a reusable collection of steering behaviours. Each behaviour converts a movement intention into a steering force, allowing multiple behaviours to be activated, weighted and combined by the same movement framework.
@@ -823,12 +867,20 @@ Every behaviour inherits from the abstract `SteeringBehaviour` class, which prov
 
 This allowed different movement techniques to be added to an agent as components while sharing the same force-generation pipeline.
 
-<ProjectMedia
-  type="video"
-  src="/Videos/GameAI/Steering/SteeringBehaviours.mp4"
-  :autoplayInView="true"
-  caption="Focused test scenes demonstrating the reusable steering-behaviour components."
-/>
+<div style="width: 100%; margin: 1.25rem 0;">
+  <iframe
+    src="https://www.youtube.com/embed/aqc_O2luao8?start=38&autoplay=1&mute=1&playsinline=1&loop=1&playlist=aqc_O2luao8"
+    title="Steering Bheaviours full Showcase"
+    loading="lazy"
+    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+    allowfullscreen
+    style="width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px;"
+  ></iframe>
+
+  <p style="text-align: center; opacity: 0.8; margin-top: 0.5rem;">
+    <strong>0:38 - 2:10 steering beahviour showcase</strong>
+  </p>
+</div>
 
 | Behaviour | Movement result |
 |---|---|
@@ -854,12 +906,20 @@ Collision Avoidance uses multiple configurable **feelers** projected around the 
 
 When a feeler detects an obstacle, the system selects the closest collision point and generates a force away from it.
 
-<ProjectMedia
-  type="video"
-  src="/Videos/GameAI/Steering/PredictiveAvoidance.mp4"
-  :autoplayInView="true"
-  caption="Predictive steering and speed-scaled raycast feelers responding to moving targets and environmental obstacles."
-/>
+<div style="width: 100%; margin: 1.25rem 0;">
+  <iframe
+    src="https://www.youtube.com/embed/aqc_O2luao8?start=88&autoplay=1&mute=1&playsinline=1&loop=1&playlist=aqc_O2luao8"
+    title="Flick & Fetch development footage"
+    loading="lazy"
+    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+    allowfullscreen
+    style="width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px;"
+  ></iframe>
+
+  <p style="text-align: center; opacity: 0.8; margin-top: 0.5rem;">
+    <strong>Collision Avoidance 1:29 - 1:50</strong>
+  </p>
+</div>
 
 ---
 
@@ -873,12 +933,20 @@ I also implemented the three core flocking behaviours:
 
 Each behaviour evaluates nearby agents within a configurable radius and field of view. Their forces can then be combined to produce group movement rather than relying on one monolithic flocking script.
 
-<ProjectMedia
-  type="video"
-  src="/Videos/GameAI/Steering/FlockingBehaviours.mp4"
-  :autoplayInView="true"
-  caption="Separation, Cohesion and Alignment combining to produce coordinated group movement."
-/>
+<div style="width: 100%; margin: 1.25rem 0;">
+  <iframe
+    src="https://www.youtube.com/embed/aqc_O2luao8?start=110&autoplay=1&mute=1&playsinline=1&loop=1&playlist=aqc_O2luao8"
+    title="Flick & Fetch development footage"
+    loading="lazy"
+    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+    allowfullscreen
+    style="width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px;"
+  ></iframe>
+
+  <p style="text-align: center; opacity: 0.8; margin-top: 0.5rem;">
+    <strong>Group Movement 1:50 - 2:02</strong>
+  </p>
+</div>
 
 Because each behaviour has its own weight, the group’s character can be changed through tuning. Stronger Separation creates a loose formation, while stronger Cohesion keeps the group closer together.
 
@@ -958,11 +1026,8 @@ Runtime Gizmos display:
 - Wander circles and selected targets.
 - Collision-avoidance feelers.
 
-<ProjectMedia
-  type="image"
-  src="/Images/GameAI/Steering/SteeringDebugGizmos.png"
-  caption="Runtime Gizmos visualising desired velocity, current velocity, steering forces, radii and collision feelers."
-/>
+<ProjectSlideshow :slides="AiScenesDebugVisualised" />
+
 
 These visualisations made abstract vector calculations visible inside the scene, making it much easier to identify incorrect directions, unsuitable weights and conflicts between active behaviours.
 

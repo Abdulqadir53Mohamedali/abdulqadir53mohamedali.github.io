@@ -170,6 +170,20 @@ export const ActualTexturesForVFXBlur = [
   },
 ] as const
 
+export const AiScenesDebugVisualised = [
+  {
+    type: 'image',
+    src: '/Images/AiScenes/DebugVisuals1.png',
+    caption: 'Wander Debug Visual in Decision Making Scene',
+
+  },
+      {
+    type: 'image',
+    src: '/Images/AiScenes/DebugVisulisation2.png',
+    caption: 'Ammo Pickup chosen Debug Visual',
+      } 
+] as const
+
 export const DesignPaintSlides = [
   {
         type: 'image',
@@ -257,6 +271,17 @@ export const splatoonSlides = [
 
     
 
+] as const
+
+
+export const AiContextVideo = [
+      {
+    type: 'video',
+    src: '/Videos/AiScenes/AiThumnial&Showcase.mp4',
+    caption: 'Compilation of the enitre Project',
+    related: [{ label: 'Pathfinding Algorithms & Grid Search', targetId: 'PathfindingAlgorithms' },{ label: 'Fuzzy Logic & AI Blackboard', targetId: 'FuzzyBlackboard' },{ label: 'Integrated DM & Combat AI', targetId: 'IntegratedDecisionMaking' },{ label: 'Steering Behaviours & Maths', targetId: 'SteeringMaths' }]
+    }, 
+    
 ] as const
 
 export const FMSlides = [

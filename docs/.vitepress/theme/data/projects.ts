@@ -53,7 +53,7 @@ export const projects: Project[] = [
     date: "Febuary 2026",
     featured: true,
     category: "Academic",
-    video:"/Videos/Paint/Thumbnail/PaintThumbnailTest2.mp4",
+    video:"/Videos/AiScenes/AiThumnial&Showcase.mp4",
     image: "/images/CarlottaWuWaPlaceholder.png",
     description: "A first-person UE5 prototype where you chain different paint powers to move, solve traversal puzzles, and clear a modular testing course built around scalable, data-driven systems.",    tags: ["C#","Unity", "Jetbrains Rider"],
     link: '/projects/AiScenes'
@@ -64,11 +64,11 @@ export const projects: Project[] = [
     date: "April 2026",
     featured: true,
     category: "Personal",
-        video:"/Videos/TankGame/Thumbnail/TankGameThumbnailTest.mp4",
+        video:"/Videos/TwinSync/TwinSyncThumbnail.mp4",
     image: "/images/CarlottaWuWaPlaceholder.png",
-  description: "An Unreal Engine tank combat playthrough built in Blueprints from a provided framework, featuring multiple enemy types, projectile patterns, and boss encounters.",
-    tags: ["Unreal Engine Blueprints", "Visual Studio 2022","Unreal Engine"],
-    link: "/projects/TankGame"
+  description: "Theme: Symmetry | Shortlisted top 10 games, Two twins stuck in different times have to work together to escape",
+    tags: ["Unity", "Jetbrains Rider","Game Jam"],
+    link: "/projects/TwinSync"
   },
 
    {
