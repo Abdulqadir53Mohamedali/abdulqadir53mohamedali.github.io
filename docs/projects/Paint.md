@@ -115,7 +115,7 @@ This Testing Environment features a series of systems
 <!-- Paste your final version we wrote together here (keep your wording). -->
 </CollapseSection>
 
-<CollapseSection sectionId="arch-perf" title="Architecture (Design Patterns) & Performance" icon="⚙">
+<CollapseSection sectionId="arch-perf" title="Architecture (Design Patterns) & Performance" icon="✦">
 
 This project fires a lot of paint projectiles and creates a lot of short-lived “impact” logic, so I focused on performance patterns that keep gameplay smooth and predictable as the level gets larger.
 

@@ -68,7 +68,7 @@ The player can swap between multiple pickup weapons, each built to feel distinct
 
 </CollapseSection>
 
-<CollapseSection title="Enemy Variety + Threat Roles" icon="⚔">
+<CollapseSection title="Enemy Variety + Threat Roles" icon="✦">
 
 Enemy variety is using a mix of any two or more mentioned below
 - **Chasers / shooters:** keep the player moving

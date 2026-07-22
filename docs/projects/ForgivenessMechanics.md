@@ -295,7 +295,7 @@ public void RespawnPlayer()
 
 ## General
 
-<CollapseSection title="Input System + Interaction Layer" icon="⌨">
+<CollapseSection title="Input System + Interaction Layer" icon="✦">
 
 **How it’s structured**
 - **Move / Jump / Crouch:** `InputHandler` calls into `CharacterMovement` (`SetInMove`, `JumpPerformed`, `JumpCancelled`, `CrouchPerformed`).

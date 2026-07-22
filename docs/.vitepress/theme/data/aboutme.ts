@@ -18,7 +18,7 @@ export const aboutMeData: AboutMeData = {
     
     "Alongside my studies, I am working on some smaller side projects which are still in the works.",
     
-    "When I'm not studying, I enjoy playing video games, Warhammer with myth soceity, Debates at Star Wars society, and am currently creating smaller personal projects to continue learning and improving my skills."
+    "When I'm not studying, I enjoy playing video games, Warhammer with myth socitey, debates at Star Wars society, and am currently creating smaller personal projects to continue learning and improving my skills."
   ],
   education: {
     institution: "University of Staffordshire",

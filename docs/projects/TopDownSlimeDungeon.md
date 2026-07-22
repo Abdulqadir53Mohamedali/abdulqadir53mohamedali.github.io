@@ -113,7 +113,7 @@ private IEnumerator Damage(float damage, float tickRate, int maxTicks)
 </CollapseSection>
 
 
-<CollapseSection title="Player Kit + Lure Ability (Crowd Control)" icon="⚔">
+<CollapseSection title="Player Kit + Lure Ability (Crowd Control)" icon="✦">
 
 **Player tools**
 - **Fire Damage projectile:** main attack for normal slimes & boss damage.

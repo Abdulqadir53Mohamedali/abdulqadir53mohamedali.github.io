@@ -340,7 +340,7 @@ By combining AI states, interfaces, delegates, collision triggers, audio and lig
 <CollapseSection
   sectionId="textures-vfx"
   title="Fire, Smoke, Textures and VFX"
-  icon="✧"
+  icon="✦"
 >
 
 Alongside my programming responsibilities, I created textures and visual effects for the companion & lantern interactions. This allowed me to contribute to both the technical implementation and visual presentation of the project.
@@ -399,7 +399,7 @@ Creating these effects gave me experience moving between texture creation, visua
 <CollapseSection
   sectionId="additional-contributions"
   title="Additional Gameplay and Team Contributions"
-  icon=""
+  icon="✦"
 >
 
 ### Reusable Bridge System
