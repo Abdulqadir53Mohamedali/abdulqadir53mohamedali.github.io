@@ -4,6 +4,7 @@ export interface Education {
   qualification: string
   institution: string
   description: string
+  highlights: string[]
   tags: string[]
 }
 
@@ -14,6 +15,11 @@ export const educations: Education[] = [
     qualification: "BSc (Hons) Computer Games Desing & Programming",
     institution: "University of Staffordshire",
     description: "I am a second year (level 5) student studying BSc (Hons) Computer Games Desing & Programming at University of Staffordshire, where I focus primarily on in-engine development work. I work with industry standard tools like Unity and Unreal Engine 5, and have the opportunity to collaborate with artists and designers to build my professional portfolio.",
+    highlights: [
+      "Studying BSc (Hons) Computer Games Design & Programming at the University of Staffordshire, with a focus on in-engine development.",
+      "Developing projects with industry-standard tools, including Unity and Unreal Engine 5.",
+      "Collaborating with artists and designers to build my professional portfolio."
+    ],
     tags: ["C++", "C#", "Unreal Engine","Unity"]
   },
   {
@@ -22,6 +28,12 @@ export const educations: Education[] = [
     qualification: "T-Level , Digital Design Devleopment & Production",
     institution: "Leicester College",
   description:"Completed a Level 3 T-Level in Digital Design, Development & Production, learning the languages listed below and studying both the front-end and back-end sides of web development, including security and database integration. Built several mini web applications (such as weather apps and Pokédex-style projects), and for the final exam designed and implemented a safari booking website with full documentation: user research, flowcharts, class diagrams, testing plans, evaluation and iteration. As part of the T-Level industry placement, completed a 316-hour project-based placement working in multidisciplinary teams to prototype a university open day app.",    
+  highlights: [
+    "Completed a Level 3 T-Level in Digital Design, Development & Production, covering front-end and back-end web development, security, and database integration.",
+    "Built mini web applications, including weather apps and Pokédex-style projects.",
+    "Designed and implemented a safari booking website for the final exam, supported by user research, flowcharts, class diagrams, testing plans, evaluation, and iteration.",
+    "Completed a 316-hour industry placement, working in multidisciplinary teams to prototype a university open day app."
+  ],
   tags: ["PHP", "HTML", "CSS","JS","Bootsrap","MySQL","Python"]
   }
 ]

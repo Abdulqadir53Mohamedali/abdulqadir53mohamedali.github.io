@@ -1,4 +1,5 @@
 import { h } from 'vue'
+import PortfolioNav from './components/PortfolioNav.vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 
@@ -40,7 +41,7 @@ export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      // 'home-hero-after': () => h(FeaturedProjects),
+      'layout-top': () => h(PortfolioNav),
     })
   },
   enhanceApp({ app, router, siteData }) {
