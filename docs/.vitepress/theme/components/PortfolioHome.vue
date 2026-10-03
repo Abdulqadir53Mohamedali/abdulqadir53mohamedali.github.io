@@ -3,6 +3,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import { withBase } from 'vitepress'
 import { homeContact, homeProjects } from '../data/homePortfolio'
 import PortfolioNav from './PortfolioNav.vue'
+import NeuralBackground from './NeuralBackground.vue'
 import { experiences } from '../data/experience'
 import { educations } from '../data/education'
 import '../styles/portfolioHome.css'
@@ -189,6 +190,9 @@ onBeforeUnmount(() => {
         </div>
       </section>
 
+      <div class="av-content-backdrop">
+        <div class="av-spectrum-divider" aria-hidden="true"><span /></div>
+        <NeuralBackground />
       <section id="work" class="av-section av-shell" aria-labelledby="work-title">
         <div class="av-section-heading"><div><p class="av-eyebrow">PROJECT SPOTLIGHT</p><h2 id="work-title">Featured projects</h2></div></div>
         <p class="av-section-intro">A selection of team projects, prototypes, and experiments. Take a look at what I built and how it works.</p>
@@ -217,14 +221,17 @@ onBeforeUnmount(() => {
         <div class="av-timeline-list"><article v-for="experience in experiences" :key="experience.id" class="av-timeline-item"><span class="av-timeline-date">{{ experience.date }} · INDUSTRY PLACEMENT</span><h4>{{ experience.title }}</h4><p class="av-institution">{{ experience.company }}</p><ul class="av-experience-bullets"><li v-for="(line, index) in experience.description" :key="index">{{ line }}</li></ul><div class="av-card-tags"><span v-for="tag in experience.tags" :key="tag">{{ tag }}</span></div></article></div>
       </section>
 
-      <section id="education" class="av-section av-shell av-education-section" aria-labelledby="education-title">
+      <section id="education" class="av-section av-education-section" aria-labelledby="education-title">
+        <div class="av-shell">
         <div class="av-section-heading"><div><p class="av-eyebrow"><span aria-hidden="true">—</span> STUDY & DEVELOPMENT</p><h2 id="education-title">Education</h2></div></div>
         <div class="av-timeline-list"><article v-for="education in educations" :key="education.id" class="av-timeline-item"><span class="av-timeline-date">{{ education.date }}</span><h4>{{ education.qualification }}</h4><p class="av-institution">{{ education.institution }}</p><ul class="av-education-bullets"><li v-for="point in education.highlights" :key="point">{{ point }}</li></ul><div class="av-card-tags"><span v-for="tag in education.tags" :key="tag">{{ tag }}</span></div></article></div>
+        </div>
       </section>
 
-      <section id="contact" class="av-contact-section av-shell" aria-labelledby="contact-title"><div class="av-contact-panel"><div class="av-contact-intro"><p class="av-eyebrow av-contact-availability">AVAILABLE NOW</p><h2 id="contact-title">Let’s build something.</h2><p>Have a project in mind, a question about my work, or just want to talk game development? Get in touch.</p><a class="av-button av-button-primary" :href="`mailto:${homeContact.email}`">Email me <span aria-hidden="true">↗</span></a></div>
+      <section id="contact" class="av-contact-section av-shell" aria-labelledby="contact-title"><p class="av-eyebrow av-contact-label"><span aria-hidden="true">—</span> CONNECT</p><div class="av-contact-panel"><div class="av-contact-intro"><p class="av-eyebrow av-contact-availability">AVAILABLE NOW</p><h2 id="contact-title">Let’s build something.</h2><p>Have a project in mind, a question about my work, or just want to talk game development? Get in touch.</p><a class="av-button av-button-primary" :href="`mailto:${homeContact.email}`">Email me <span aria-hidden="true">↗</span></a></div>
           <div class="av-contact-details"><div class="av-contact-row"><span>EMAIL</span><a :href="`mailto:${homeContact.email}`">{{ homeContact.email }}</a><button aria-label="Copy email address" @click="copy(homeContact.email, 'Email')">Copy</button></div><div class="av-contact-row"><span>DISCORD</span><strong>{{ homeContact.discord }}</strong><button aria-label="Copy Discord username" @click="copy(homeContact.discord, 'Discord username')">Copy</button></div><div class="av-contact-row"><span>CV</span><a :href="cv" target="_blank" rel="noopener">View CV (PDF) <span aria-hidden="true">↗</span></a></div><div class="av-contact-row"><span>BASED IN</span><strong>United Kingdom</strong><span class="av-status-dot" aria-hidden="true"></span></div><div class="av-contact-socials"><a v-for="social in homeContact.socials" :key="social.label" :href="social.href" :title="social.placeholder ? `${social.label} — profile link coming soon` : social.label" target="_blank" rel="noopener noreferrer">{{ social.label }} <span aria-hidden="true">↗</span></a></div><p class="av-copy-status" role="status">{{ copyStatus }}</p></div>
         </div></section>
+      </div>
     </main>
     <footer class="av-footer av-shell"><a class="av-footer-brand" href="#top">AVDOLZ<span class="av-name-dot">.</span></a><p>© {{ new Date().getFullYear() }} Abdulqadir Mohamedali. All rights reserved.</p><div><a :href="withBase('/projects')">Projects</a><a :href="cv" target="_blank" rel="noopener">CV ↗</a><a v-for="social in homeContact.socials.slice(0, 2)" :key="social.label" :href="social.href" target="_blank" rel="noopener noreferrer">{{ social.label }} ↗</a></div></footer>
     <nav class="av-page-controls" aria-label="Page shortcuts"><a v-show="scrollProgress > 0.08" href="#top" aria-label="Back to top" title="Back to top">↑</a><a v-show="scrollProgress < 0.92" href="#contact" aria-label="Jump to contact" title="Jump to contact">↓</a></nav>

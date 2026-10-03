@@ -15,7 +15,7 @@ onBeforeUnmount(() => { window.removeEventListener('scroll', updateScroll); docu
 </script>
 <template>
   <header class="av-header" :class="{ 'is-scrolled': scrolled || !isHome, 'has-open-menu': menuOpen, 'is-inner': !isHome }">
-    <a class="av-brand" :href="withBase('/')"><span>Avdolz - Gameplay Developer</span></a>
+    <a class="av-brand" :href="withBase('/')"><span>Avdolz - Game Developer</span></a>
     <button id="portfolio-menu-button" class="av-menu-toggle" :aria-expanded="menuOpen" aria-controls="portfolio-navigation" @click="menuOpen = !menuOpen">{{ menuOpen ? 'Close −' : 'Menu +' }}</button>
     <nav id="portfolio-navigation" class="av-nav" :class="{ 'is-open': menuOpen }" aria-label="Main navigation" @click="menuOpen = false">
       <a :href="withBase('/')" :class="{ 'is-page-active': isHome }" :aria-current="isHome ? 'page' : undefined">Home</a>
