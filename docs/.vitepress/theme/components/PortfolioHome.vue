@@ -4,6 +4,7 @@ import { withBase } from 'vitepress'
 import { homeContact, homeProjects } from '../data/homePortfolio'
 import { projects } from '../data/projects'
 import PortfolioNav from './PortfolioNav.vue'
+import ArrowUpRight from './ArrowUpRight.vue'
 import CardVideo from './CardVideo.vue'
 import NeuralBackground from './NeuralBackground.vue'
 import { experiences } from '../data/experience'
@@ -186,7 +187,7 @@ onBeforeUnmount(() => {
             <div class="av-specialisms" aria-hidden="true"><Transition name="av-specialism" mode="out-in"><span :key="specialismIndex">{{ specialisms[specialismIndex] }}</span></Transition></div>
             <span class="av-sr-only">Gameplay Systems, Character AI, Movement & Game Feel, Combat Systems</span>
           </div>
-          <div class="av-actions"><a class="av-button av-button-primary" href="#work">View projects <span aria-hidden="true">↗</span></a><a class="av-button av-button-quiet" :href="cv" target="_blank" rel="noopener">View CV <span aria-hidden="true">↗</span></a></div>
+          <div class="av-actions"><a class="av-button av-button-primary" href="#work">View projects <ArrowUpRight /></a><a class="av-button av-button-quiet" :href="cv" target="_blank" rel="noopener">View CV <ArrowUpRight /></a></div>
           <div class="av-hero-tools"><span>UNREAL ENGINE</span><span>UNITY</span><span>C++ / C#</span><span class="av-location">BASED IN THE UK</span></div>
         </div>
         <div class="av-showcase av-shell">
@@ -194,7 +195,7 @@ onBeforeUnmount(() => {
           <div class="av-showcase-options" role="group" aria-label="Choose a project preview">
             <button v-for="(project, index) in showcases" :key="project.id" class="av-showcase-option" :class="{ 'is-active': activeIndex === index }" :aria-pressed="activeIndex === index" @click="chooseProject(index)"><span class="av-index">0{{ index + 1 }}</span><span><strong>{{ project.title }}</strong><small>{{ project.engine }} · {{ project.tags[0] }}</small></span><span class="av-option-diamond" aria-hidden="true">◇</span></button>
           </div>
-          <div class="av-showcase-caption"><a :href="withBase(activeProject.link)">Explore project <span aria-hidden="true">↗</span></a></div>
+          <div class="av-showcase-caption"><a :href="withBase(activeProject.link)">Explore project <ArrowUpRight /></a></div>
         </div>
       </section>
 
@@ -236,12 +237,12 @@ onBeforeUnmount(() => {
         </div>
       </section>
 
-      <section id="contact" class="av-contact-section av-shell" aria-labelledby="contact-title"><p class="av-eyebrow av-contact-label"><span aria-hidden="true">—</span> CONNECT</p><div class="av-contact-panel"><div class="av-contact-intro"><p class="av-eyebrow av-contact-availability">AVAILABLE NOW</p><h2 id="contact-title">Let’s build something.</h2><p>Have a project in mind, a question about my work, or just want to talk game development? Get in touch.</p><p>Open to <strong>gameplay programming roles, internships and freelance commissions</strong>. Based in the <strong>United Kingdom (GMT)</strong> and usually replying within <strong>24–48 hours</strong>.</p><a class="av-button av-button-primary" :href="`mailto:${homeContact.email}`">Email me <span aria-hidden="true">↗</span></a></div>
-          <div class="av-contact-details"><div class="av-contact-row"><span>EMAIL</span><a :href="`mailto:${homeContact.email}`">{{ homeContact.email }}</a><button aria-label="Copy email address" @click="copy(homeContact.email, 'Email')">Copy</button></div><div class="av-contact-row"><span>DISCORD</span><strong>{{ homeContact.discord }}</strong><button aria-label="Copy Discord username" @click="copy(homeContact.discord, 'Discord username')">Copy</button></div><div class="av-contact-row"><span>CV</span><a :href="cv" target="_blank" rel="noopener">View CV (PDF) <span aria-hidden="true">↗</span></a></div><div class="av-contact-row"><span>BASED IN</span><strong>United Kingdom</strong><span class="av-status-dot" aria-hidden="true"></span></div><div class="av-contact-socials"><a v-for="social in homeContact.socials" :key="social.label" :href="social.href" :title="social.placeholder ? `${social.label} — profile link coming soon` : social.label" target="_blank" rel="noopener noreferrer">{{ social.label }} <span aria-hidden="true">↗</span></a></div><p class="av-copy-status" role="status">{{ copyStatus }}</p></div>
+      <section id="contact" class="av-contact-section av-shell" aria-labelledby="contact-title"><p class="av-eyebrow av-contact-label"><span aria-hidden="true">—</span> CONNECT</p><div class="av-contact-panel"><div class="av-contact-intro"><p class="av-eyebrow av-contact-availability">AVAILABLE NOW</p><h2 id="contact-title">Let’s build something.</h2><p>Have a project in mind, a question about my work, or just want to talk game development? Get in touch.</p><p>Open to <strong>gameplay programming roles, internships and freelance commissions</strong>. Based in the <strong>United Kingdom (GMT)</strong> and usually replying within <strong>24–48 hours</strong>.</p><a class="av-button av-button-primary" :href="`mailto:${homeContact.email}`">Email me <ArrowUpRight /></a></div>
+          <div class="av-contact-details"><div class="av-contact-row"><span>EMAIL</span><a :href="`mailto:${homeContact.email}`">{{ homeContact.email }}</a><button aria-label="Copy email address" @click="copy(homeContact.email, 'Email')">Copy</button></div><div class="av-contact-row"><span>DISCORD</span><strong>{{ homeContact.discord }}</strong><button aria-label="Copy Discord username" @click="copy(homeContact.discord, 'Discord username')">Copy</button></div><div class="av-contact-row"><span>CV</span><a :href="cv" target="_blank" rel="noopener">View CV (PDF) <ArrowUpRight /></a></div><div class="av-contact-row"><span>BASED IN</span><strong>United Kingdom</strong><span class="av-status-dot" aria-hidden="true"></span></div><div class="av-contact-socials"><a v-for="social in homeContact.socials" :key="social.label" :href="social.href" :title="social.placeholder ? `${social.label} — profile link coming soon` : social.label" target="_blank" rel="noopener noreferrer">{{ social.label }} <ArrowUpRight /></a></div><p class="av-copy-status" role="status">{{ copyStatus }}</p></div>
         </div></section>
       </div>
     </main>
-    <footer class="av-footer av-shell"><a class="av-footer-brand" href="#top">AVDOLZ<span class="av-name-dot"></span></a><p>© {{ new Date().getFullYear() }} Abdulqadir Mohamedali. All rights reserved.</p><div><a :href="withBase('/projects')">Projects</a><a :href="cv" target="_blank" rel="noopener">CV ↗</a><a v-for="social in homeContact.socials.slice(0, 2)" :key="social.label" :href="social.href" target="_blank" rel="noopener noreferrer">{{ social.label }} ↗</a></div></footer>
+    <footer class="av-footer av-shell"><a class="av-footer-brand" href="#top">AVDOLZ<span class="av-name-dot"></span></a><p>© {{ new Date().getFullYear() }} Abdulqadir Mohamedali. All rights reserved.</p><div><a :href="withBase('/projects')">Projects</a><a :href="cv" target="_blank" rel="noopener">CV <ArrowUpRight /></a><a v-for="social in homeContact.socials.slice(0, 2)" :key="social.label" :href="social.href" target="_blank" rel="noopener noreferrer">{{ social.label }} <ArrowUpRight /></a></div></footer>
     <nav class="av-page-controls" aria-label="Page shortcuts"><a v-show="scrollProgress > 0.08" href="#top" aria-label="Back to top" title="Back to top">↑</a><a v-show="scrollProgress < 0.92" href="#contact" aria-label="Jump to contact" title="Jump to contact">↓</a></nav>
   </div>
 </template>
