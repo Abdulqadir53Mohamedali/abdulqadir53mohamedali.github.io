@@ -13,6 +13,7 @@ onMounted(() => {
   const load = () => {
     if (loaded) return
     loaded = true
+    el.poster = props.poster
     el.src = props.src
     el.preload = 'metadata'
     el.load()
@@ -30,6 +31,10 @@ onMounted(() => {
   const nearby = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) { load(); nearby.disconnect() }
   }, { rootMargin: '250px 0px' })
+  const preview = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { el.poster = props.poster; preview.disconnect() }
+  }, { rootMargin: '500px 0px' })
+  preview.observe(el)
   const viewport = new IntersectionObserver(entries => {
     visible = entries[0].isIntersecting
     void sync()
@@ -39,6 +44,7 @@ onMounted(() => {
   document.addEventListener('visibilitychange', sync)
   cleanup = () => {
     disposed = true
+    preview.disconnect()
     nearby.disconnect()
     viewport.disconnect()
     document.removeEventListener('visibilitychange', sync)
@@ -51,5 +57,5 @@ onBeforeUnmount(() => cleanup())
 </script>
 
 <template>
-  <video ref="video" :poster="poster" muted loop playsinline preload="none" />
+  <video ref="video" muted loop playsinline preload="none" />
 </template>
