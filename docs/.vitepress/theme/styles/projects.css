@@ -18,15 +18,8 @@
   margin: 0 0 var(--space-md) 0;
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  background: linear-gradient(
-    120deg,
-    var(--color-brand-primary) 0%,
-    var(--color-brand-secondary) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #f1eee7;
+  text-shadow: 0 0 9px rgba(185, 155, 231, .18);
 }
 
 .projects-description {
@@ -250,3 +243,63 @@
     font-size: var(--font-size-xs);
   }
 }
+
+/* Edge-to-edge diamond tiles with a travelling reveal wave. */
+.Layout.projects-index .VPContent {
+  position: relative;
+  isolation: isolate;
+  background: #101114;
+}
+.Layout.projects-index .VPContent::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-size: 100% 100%;
+}
+.Layout.projects-index .VPContent::after {
+  background-color: #17191c;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22tiles%22%20width%3D%2224%22%20height%3D%2236%22%20patternUnits%3D%22userSpaceOnUse%22%20patternTransform%3D%22rotate%2818%29%20scale%28.25%29%22%3E%3Cpath%20d%3D%22M12%200L24%2018L12%2036L0%2018Z%22%20fill%3D%22%233b3944%22%20stroke%3D%22%23626070%22%20stroke-width%3D%22.4%22%2F%3E%3C%2Fpattern%3E%3ClinearGradient%20id%3D%22tint%22%3E%3Cstop%20stop-color%3D%22%23b99be7%22%20stop-opacity%3D%22.055%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2391b5df%22%20stop-opacity%3D%22.07%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22%2317191e%22%20d%3D%22M0%200H10000V10000H0Z%22%2F%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22url%28%23tiles%29%22%2F%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22url%28%23tint%29%22%2F%3E%3C%2Fsvg%3E");
+  mask-image: linear-gradient(105deg, transparent 35%, #0003 43%, #000 50%, #0003 57%, transparent 65%);
+  mask-size: 300% 100%;
+  mask-repeat: no-repeat;
+  animation: projects-diamond-wave 9s ease-in-out infinite alternate;
+}
+@keyframes projects-diamond-wave {
+  from { mask-position: 100% 0; }
+  to { mask-position: 0% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .Layout.projects-index .VPContent::after { animation: none; opacity: .18; mask-position: 50% 0; }
+}
+.projects-index .filter-toggle-btn {
+  background: #202227;
+  color: #e2e3e7;
+  border-color: #454850;
+}
+.projects-index .filter-toggle-btn:hover,
+.projects-index .filter-toggle-btn[aria-expanded="true"] {
+  background: #2b2e35;
+  color: #fff;
+  border-color: #858995;
+}
+.projects-index .filter-toggle-btn:focus-visible { outline: 2px solid #aeb4c2; outline-offset: 3px; }
+.projects-index .projects-description, .projects-index .projects-count { color: #a4adbd; }
+
+/* Filter controls share the portfolio's navy and amethyst palette. */
+.projects-index .filters-panel {
+  background: linear-gradient(120deg, #1d192c, #141e30);
+  border-color: #45405b;
+  padding: 26px 24px;
+}
+.projects-index .filter-group-title { color: #f1eee7; margin: 0 0 14px; }
+.projects-index .filter-tags { gap: 9px; }
+.projects-index .filter-tag { background: #171c2a; border-color: #49415c; color: #cec6db; }
+.projects-index .filter-tag:hover { background: #332643; border-color: #b99be7; color: #eee2ff; }
+.projects-index .filter-tag.active { background: #b99be7; border-color: #cbb2ed; color: #191323; }
+.projects-index .filter-tag.active:hover { background: #c9aff0; }
+.projects-index .filter-tag:focus-visible { outline: 2px solid #b99be7; outline-offset: 3px; }
+.projects-index .reset-filters-btn { color: #d4bde9; border-color: #65517e; }
+.projects-index .reset-filters-btn:hover { background: #332643; color: #eee2ff; border-color: #b99be7; }
+@media (max-width: 640px) { .projects-index .filters-panel { padding: 22px 18px; } }

@@ -250,7 +250,7 @@
 .av-availability .av-status-dot { background: #e2bd7c; }
 .av-media-badges { position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; z-index: 1; }
 .av-card-date, .av-media-badges .av-category-tag { font: 10px/1.5 'Consolas', monospace; padding: 3px 8px; color: #e1e5ef; background: #0b101be8; border: 1px solid #536079; }
-.av-card-featured { background: linear-gradient(115deg, #ead183, #94b9e1); border-color: #c9c9ae; color: #142033; font-weight: 700; }
+.av-card-featured { background: linear-gradient(115deg, #c4ad6b, #799bc0); border-color: #a3a48f; color: #142033; font-weight: 700; }
 .av-timeline-list { max-width: none; display: grid; gap: 22px; }
 .av-timeline-item { padding: 28px 32px; border: 1px solid #3f4562; border-left: 3px solid #9a7cbe; border-radius: 8px; background: linear-gradient(115deg, #171d2d, #111827); }
 .av-timeline-item::before { display: none; }
