@@ -1,5 +1,6 @@
 ---
 layout: doc
+pageClass: project-detail
 ---
 
 <script setup lang="ts">

@@ -1,5 +1,6 @@
 ---
 layout: doc
+pageClass: project-detail slime-project
 ---
 <script setup lang="ts">
 import { TopDownSlimeSlides } from '../.vitepress/theme/data/projectSlides'
@@ -19,7 +20,7 @@ This project was a university assigment , 8 weeks , we were given a 2D Top-down 
 
 <div class="project-overview">
 
-A **4-room top-down dungeon** built around **readable combat pressure** and **simple, distinct enemy mechanics**.
+A **4-room top-down dungeon** built around **readable combat pressure** and <strong class="slime-subtle-emphasis">simple, distinct enemy mechanics</strong>.
 
 ### Core systems
 - **Room-based combat loop:** clear a room → manage pressure → defeat the **boss** to progress.
@@ -36,10 +37,10 @@ A **4-room top-down dungeon** built around **readable combat pressure** and **si
 - **Progression + scoring:** enemies drop **score on kill**, rewarding clean clears and good routing.
 
 ### Debuff variety (small slime projectiles)
-- **Input Inversion:** 
-- **Freeze:** 
-- **Slow:** 
-- **Poison (DoT):** 
+- <strong class="slime-subtle-emphasis">Input Inversion:</strong> 
+- <strong class="slime-subtle-emphasis">Freeze:</strong> 
+- <strong class="slime-subtle-emphasis">Slow:</strong> 
+- <strong class="slime-subtle-emphasis">Poison (DoT):</strong> 
 </div>
 
 ## Highlights

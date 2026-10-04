@@ -1,5 +1,5 @@
 <template>
-  <section class="collapse-section" :class="{ 'is-open': isOpen }":id="sectionId">
+  <section class="collapse-section" :class="{ 'is-open': isOpen }":id="resolvedId">
     
     <button
       class="collapse-header"
@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { computed, nextTick, ref, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps<{
   title: string
@@ -37,6 +37,8 @@ const props = defineProps<{
     sectionId?: string 
 
 }>()
+
+const resolvedId = computed(() => props.sectionId || `topic-${props.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`)
 
 const isOpen = ref(props.defaultOpen ?? false)
 
@@ -47,17 +49,28 @@ const toggle = () => {
 // Listen for slideshow “open this dropdown” event
 const onOpenRequest = (event: Event) => {
   const e = event as CustomEvent<{ id?: string }>
-  if (!props.sectionId) return
-  if (e.detail?.id === props.sectionId) {
+  if (e.detail?.id === resolvedId.value) {
     isOpen.value = true
   }
 }
 
+const openFromHash = async () => {
+  let id: string
+  try { id = decodeURIComponent(window.location.hash.slice(1)) } catch { return }
+  if (id !== resolvedId.value) return
+  isOpen.value = true
+  await nextTick()
+  document.getElementById(id)?.scrollIntoView({ block: 'start' })
+}
+
 onMounted(() => {
+  openFromHash()
+  window.addEventListener('hashchange', openFromHash)
   window.addEventListener('vp-open-collapse', onOpenRequest as EventListener)
 })
 
 onBeforeUnmount(() => {
+  window.removeEventListener('hashchange', openFromHash)
   window.removeEventListener('vp-open-collapse', onOpenRequest as EventListener)
 })
 </script>
@@ -65,6 +78,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .collapse-section {
+  scroll-margin-top: 120px;
   border-radius: var(--radius-md, 8px);
   overflow: hidden;
   background: var(--color-collpaseableCards-baseBackgroundColour, #1b1b1f);

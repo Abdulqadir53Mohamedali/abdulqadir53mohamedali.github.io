@@ -1,5 +1,6 @@
 import { h } from 'vue'
 import PortfolioNav from './components/PortfolioNav.vue'
+import ProjectOutline from './components/ProjectOutline.vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 
@@ -42,6 +43,7 @@ export default {
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       'layout-top': () => h(PortfolioNav),
+      'aside-outline-before': () => h(ProjectOutline),
     })
   },
   enhanceApp({ app, router, siteData }) {

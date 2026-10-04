@@ -3,7 +3,7 @@
     <a class="back-to-projects" :href="withBase('/projects/')">
       ← Back to Projects
     </a>
-    <h1 class="project-title-projects">{{ title }}</h1>
+    <h1 :key="title" class="project-title-projects">{{ title }}</h1>
 
     <div class="project-meta-card">
       <div class="project-meta-row">

@@ -1,5 +1,6 @@
 ---
 layout: doc
+pageClass: project-detail
 ---
 <script setup lang="ts">
 import { StarWarsDungeonSlides,StarWarsDungeonProceduralSlides,StarWarsDungeonEnemyCombatSlides,StarWarsDungeonShopSlides } from '../.vitepress/theme/data/projectSlides'

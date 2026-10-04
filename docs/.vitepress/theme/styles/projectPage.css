@@ -129,3 +129,113 @@
 .vp-doc .custom-block.tip p {
   color: rgba(255,255,255,0.9);
 }
+/* Project titles reveal on entry, followed by a short spectrum underline. */
+.project-hero .project-title-projects {
+  animation: project-title-enter 1.4s cubic-bezier(.16,1,.3,1) both;
+}
+.project-hero .project-title-projects::after {
+  content: '';
+  display: block;
+  width: min(240px, 60%);
+  height: 2px;
+  margin: 20px auto 24px;
+  background: linear-gradient(90deg, #b99be7, #91b5df 50%, #c8ab77);
+  transform-origin: center;
+  animation: project-title-line 1.1s .25s ease-out both;
+}
+@keyframes project-title-enter {
+  from { opacity: 0; transform: translateY(16px); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes project-title-line {
+  from { opacity: 0; transform: scaleX(.15); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-hero .project-title-projects, .project-hero .project-title-projects::after { animation: none; }
+}
+
+.project-detail .VPDocAsideOutline { display: none !important; }
+
+/* Shared project-page palette, approved on Flick & Fetch. */
+.Layout.project-detail {
+  --color-bg-card: #111827;
+  --color-border: #343d52;
+  --color-text-primary: #f1eee7;
+  --color-text-secondary: #b6becd;
+  --color-text-tertiary: #a4adbd;
+  --color-collpaseableCards-baseBackgroundColour: #1e2034;
+  --color-collpaseableCards-baseCodeBackgroundColour: #172337;
+  --color-collpaseableCards-open-highlight: #a68bc8;
+  --color-codecollpaseableCards-open-highlight: #91a5cd;
+}
+.project-detail .project-meta-card {
+  background: linear-gradient(120deg, #201d30, #152136);
+  border-color: #45445e;
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+.project-detail .project-meta-label { color: #b99bd8; }
+.project-detail .project-meta-value { color: #e4e5ec; }
+.project-detail .home-btn {
+  background: #292039;
+  border: 1px solid #65517e;
+  border-radius: 5px;
+  color: #ddc9ef;
+  text-decoration: none;
+}
+.project-detail .home-btn:first-child { background: #2b2730; color: #dac18b; border-color: #78694f; }
+.project-detail .home-btn:hover { background: #3a2b4d; border-color: #b99be7; color: #f1e8fc; }
+.project-detail .custom-block.tip {
+  background: linear-gradient(115deg, #251f38, #182238);
+  border: 1px solid #48405e;
+  border-left: 3px solid #b99be7;
+  border-radius: 8px;
+  color: #d7dce6;
+}
+.project-detail .custom-block-title { color: #d4bde9; }
+.project-detail .collapse-section {
+  border-radius: 7px;
+  box-shadow: 0 4px 16px #00000012;
+  transition: border-color .2s ease;
+}
+.project-detail .collapse-header { padding: 15px 18px; color: #ece8f2; }
+.project-detail .collapse-header:hover { background: #b99be710; }
+.project-detail .collapse-icon { color: #c8ab77; }
+.project-detail .collapse-chevron { color: #baa2d8; }
+.project-detail .collapse-body { padding: 20px; background: #111827; color: #b6becd; }
+.project-detail .collapse-section.is-open > .collapse-header { background: linear-gradient(110deg, #2a233b, #1b283c); }
+.project-detail .ps, .project-detail .project-media { background: #111827; border-color: #343d52; border-radius: 8px; }
+.project-detail .ps-caption { background: #151e2d; border-color: #343d52; color: #b6becd; }
+.project-detail .ps-related-label { color: #a4adbd; }
+.project-detail .ps-chip { background: #2c2730; border: 1px solid #71634d; color: #d9bf88; border-radius: 5px; }
+.project-detail .ps-chip:hover { background: #37303c; border-color: #c8ab77; }
+.project-detail .ps-dots { background: #111827; }
+.project-detail .ps-dot { background: #354055; border-color: #69728a; }
+.project-detail .ps-dot.is-active { background: #b99be7; border-color: #b99be7; }
+.project-detail .ps-arrow { background: #111827dd; color: #e5daef; border-color: #65517e; }
+.project-detail .ps-arrow:hover { background: #332643; }
+.project-detail .collapse-header:focus-visible, .project-detail .ps-chip:focus-visible, .project-detail .home-btn:focus-visible { outline: 2px solid #b99be7; outline-offset: -3px; }
+@media (max-width: 640px) {
+  .project-detail .project-meta-card { padding: 16px; }
+  .project-detail .collapse-body { padding: 15px; }
+}
+
+/* Slime overview: quiet emphasis with a restrained passing blue tint. */
+.slime-project .project-overview .slime-subtle-emphasis {
+  font-weight: 600;
+  letter-spacing: normal;
+  background-image: linear-gradient(100deg, #d7dce6 0%, #d7dce6 43%, #a9bfdc 50%, #d7dce6 57%, #d7dce6 100%);
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: slime-overview-shimmer 8s ease-in-out infinite;
+}
+@keyframes slime-overview-shimmer {
+  0%, 15% { background-position: 100% 50%; }
+  85%, 100% { background-position: 0% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slime-project .project-overview .slime-subtle-emphasis { animation: none; background: none; color: #d7dce6; -webkit-text-fill-color: #d7dce6; }
+}
