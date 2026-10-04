@@ -2,13 +2,15 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import { withBase } from 'vitepress'
 import { homeContact, homeProjects } from '../data/homePortfolio'
+import { projects } from '../data/projects'
 import PortfolioNav from './PortfolioNav.vue'
 import NeuralBackground from './NeuralBackground.vue'
 import { experiences } from '../data/experience'
 import { educations } from '../data/education'
 import '../styles/portfolioHome.css'
 
-const showcases = homeProjects.slice(0, 3)
+const slimeProject = projects.find(project => project.id === 9)!
+const showcases = [...homeProjects.slice(0, 3), { ...slimeProject, title: 'Slime Dungeon', engine: 'Unity', video: slimeProject.video!, link: slimeProject.link!, image: '/Images/TopDownSlime/SmallSlimeWithProjectile.png' }]
 const activeIndex = ref(0)
 const activeProject = computed(() => showcases[activeIndex.value])
 const heroVideo = ref<HTMLVideoElement>()
@@ -206,7 +208,7 @@ onBeforeUnmount(() => {
       <section id="about" class="av-about-section" aria-labelledby="about-title"><div class="av-shell">
         <p class="av-eyebrow"><span aria-hidden="true">—</span> BEHIND THE WORK</p><h2 id="about-title">About me</h2>
         <div class="av-about-grid">
-          <div class="av-about-copy"><p class="av-lead">I’m Abdulqadir, also known as <strong>Avdolz</strong>. I enjoy taking an idea apart, understanding what makes it work, and turning it into something you can play.</p><p>I study Games Design & Programming at the University of Staffordshire. My work spans Unreal Engine and Unity, with a particular interest in gameplay mechanics, character AI, and UI implementation.</p><p>Outside development, you’ll usually find me playing games, enjoying Warhammer, or talking Star Wars. Fantasy and sci-fi are a big part of what inspires me.</p></div>
+          <div class="av-about-copy"><p class="av-lead"> I am a programmer with a passion for game development and creating game mechanics. I have a growing interest in UI creation and implementation, as well as AI ( NPC / Enemy) in games, and enjoy continiously increasing my knowlegde and applying it in these areas.</p><p>I study <a class="av-inline-link" href="https://www.staffs.ac.uk/course/computer-games-design-programming-bsc" target="_blank" rel="noopener noreferrer">Games Design & Programming</a> at the <a class="av-inline-link" href="https://www.staffs.ac.uk/" target="_blank" rel="noopener noreferrer">University of Staffordshire</a>. My work spans Unreal Engine and Unity, with a particular interest in gameplay mechanics, character AI, and UI implementation.</p><p>Outside development, you’ll usually find me playing games, enjoying Warhammer, or talking Star Wars. Fantasy and sci-fi are a big part of what inspires me.</p></div>
           <div class="av-skills-grid">
             <article class="av-skill-panel"><h3>Engines</h3><p>Unreal Engine 5 · Unity</p></article>
             <article class="av-skill-panel"><h3>Languages</h3><p>C++ · C# · Unreal Blueprints</p></article>
@@ -224,7 +226,7 @@ onBeforeUnmount(() => {
       <section id="education" class="av-section av-education-section" aria-labelledby="education-title">
         <div class="av-shell">
         <div class="av-section-heading"><div><p class="av-eyebrow"><span aria-hidden="true">—</span> STUDY & DEVELOPMENT</p><h2 id="education-title">Education</h2></div></div>
-        <div class="av-timeline-list"><article v-for="education in educations" :key="education.id" class="av-timeline-item"><span class="av-timeline-date">{{ education.date }}</span><h4>{{ education.qualification }}</h4><p class="av-institution">{{ education.institution }}</p><ul class="av-education-bullets"><li v-for="point in education.highlights" :key="point">{{ point }}</li></ul><div class="av-card-tags"><span v-for="tag in education.tags" :key="tag">{{ tag }}</span></div></article></div>
+        <div class="av-timeline-list"><article v-for="education in educations" :key="education.id" class="av-timeline-item"><span class="av-timeline-date">{{ education.date }}</span><h4>{{ education.qualification }}</h4><p class="av-institution"><a class="av-inline-link" :href="education.institutionUrl" target="_blank" rel="noopener noreferrer">{{ education.institution }}</a></p><ul class="av-education-bullets"><li v-for="point in education.highlights" :key="point">{{ point }}</li></ul><div class="av-card-tags"><span v-for="tag in education.tags" :key="tag">{{ tag }}</span></div></article></div>
         </div>
       </section>
 

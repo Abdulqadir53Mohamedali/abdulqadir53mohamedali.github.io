@@ -35,8 +35,7 @@ export const homeContact = {
     { label: 'GitHub', href: 'https://github.com/Abdulqadir53Mohamedali', placeholder: false },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abdulqadir-mohamedali-46b534287/', placeholder: false },
     // Temporary platform links requested by the owner; replace with profile URLs.
-    { label: 'YouTube', href: 'https://www.youtube.com/', placeholder: true },
-    { label: 'Instagram', href: 'https://www.instagram.com/', placeholder: true },
-    { label: 'X', href: 'https://x.com/', placeholder: true },
+    { label: 'YouTube', href: 'https://youtube.com/@aqgamedevs?si=RTirkGNMCKGetDCJ', placeholder: true },
+    { label: 'X', href: 'https://x.com/aqgamedeveloper?s=11&t=bO5FKDyiPlCcnkK-Udi9AQ', placeholder: true },
   ],
 }

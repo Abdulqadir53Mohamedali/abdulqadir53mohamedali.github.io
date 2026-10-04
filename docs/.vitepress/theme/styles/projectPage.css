@@ -239,3 +239,28 @@
 @media (prefers-reduced-motion: reduce) {
   .slime-project .project-overview .slime-subtle-emphasis { animation: none; background: none; color: #d7dce6; -webkit-text-fill-color: #d7dce6; }
 }
+
+.project-detail .project-hero .back-to-projects {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  position: relative;
+  top: -16px;
+  margin-bottom: 8px;
+  border: 1px solid #50525c;
+  border-radius: 8px;
+  background: #25272e;
+  color: #f1eee7;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .2s ease, box-shadow .2s ease;
+}
+.project-detail .project-hero .back-to-projects:hover,
+.project-detail .project-hero .back-to-projects:focus-visible {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(#30313b, #30313b) padding-box, linear-gradient(110deg, #b99be7, #91b5df 55%, #c8ab77) border-box;
+  box-shadow: 0 0 12px #b99be724;
+}
+.project-detail .project-hero .back-to-projects:focus-visible { outline: 2px solid #b99be7; outline-offset: 3px; }

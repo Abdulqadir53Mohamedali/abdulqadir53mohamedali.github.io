@@ -1,7 +1,7 @@
 <template>
   <header class="project-hero">
-    <a class="back-to-projects" :href="withBase('/projects/')">
-      ← Back to Projects
+    <a class="back-to-projects" :href="withBase('/projects')">
+      ← All Projects
     </a>
     <h1 :key="title" class="project-title-projects">{{ title }}</h1>
 
