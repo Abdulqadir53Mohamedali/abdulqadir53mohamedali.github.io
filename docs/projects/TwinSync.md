@@ -1,6 +1,6 @@
 ---
 layout: doc
-pageClass: wide-doc
+pageClass: wide-doc project-detail project-detail-gold
 
 ---
 

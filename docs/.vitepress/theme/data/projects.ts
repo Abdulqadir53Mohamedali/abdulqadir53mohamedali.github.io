@@ -20,7 +20,7 @@ export const projects: Project[] = [
     featured: true,
     category: "Academic",
     video:"/Videos/FLFN/Thumbnail/FFLFNVIDEO.mp4",
-    image: "/images/CarlottaWuWaPlaceholder.png",
+    image: "/Images/previews/project-1.webp",
     description: "A Team developed cozy fossil mining game featuring environmental hazards, excavation mechanics and a museum progression system, recieved the Best Mechanic Award",    tags: ["C++", "Unreal Engine","Substance Designer", "Photoshop ","Unreal Blueprints", "Jetbrains Rider"],
     link: '/projects/FlickFetch'
   },
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     featured: true,
     category: "Academic",
         video:"/Videos/Splatoon/Thumbnail/SplatoonThumnail.mp4",
-    image: "/images/CarlottaWuWaPlaceholder.png",
+    image: "/Images/previews/project-2.webp",
  description: "A 2D platformer built around responsive movement, squid‑style wall/ground traversal, and a focus on “juice & feel” through tightly synced VFX, sound, dashes, and shooting feedback.",    tags: ["C#", "Visual Studio 2022", "Unity"],
     link: "/projects/Splatoon"
   },
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     featured: true,
     category: "Academic",
     video:"/Videos/Paint/Thumbnail/PaintThumbnailTest2.mp4",
-    image: "/images/CarlottaWuWaPlaceholder.png",
+    image: "/Images/previews/project-3.webp",
     description: "A first-person UE5 prototype where you chain different paint powers to move, solve traversal puzzles, and clear a modular testing course built around scalable, data-driven systems.",    tags: ["C++", "Unreal Engine", "Unreal Blueprints", "Jetbrains Rider"],
     link: '/projects/Paint'
   },
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     featured: true,
     category: "Academic",
     video:"/Videos/AiScenes/AiThumnial&Showcase.mp4",
-    image: "/images/CarlottaWuWaPlaceholder.png",
+    image: "/Images/previews/project-4.webp",
     description: "A Game Artificial Intelligence module , taught the theory then tasked with implementing Multiple Pathfinding algorithms ,Steering Bheaviours & Fuzzy logic. Then using all of them together in a final big combat scene",    tags: ["C#","Unity", "Jetbrains Rider"],
     link: '/projects/AiScenes'
   },
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     featured: true,
     category: "Personal",
         video:"/Videos/TwinSync/TwinSyncThumbnail.mp4",
-    image: "/images/CarlottaWuWaPlaceholder.png",
+    image: "/Images/previews/project-5.webp",
   description: "Theme: Symmetry | Shortlisted top 10 games, Two twins stuck in different times have to work together to escape",
     tags: ["Unity", "Jetbrains Rider","Game Jam"],
     link: "/projects/TwinSync"
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     featured: true,
     category: "Academic",
     video:"/Videos/FM/Thumbnail/FMThumbnailTest.mp4",
-    image: "/images/CarlottaWuWaPlaceholder.png",
+    image: "/Images/previews/project-6.webp",
   description: "A 2D platformer prototype focused on forgiveness mechanics (jump buffer, coyote time, variable jump height etc) with event-driven (& coroutine) checkpoints, respawns, and interactions.",
     tags: ["C#","Unity", "Visual Studio 2022"],
     link: "/projects/ForgivenessMechanics"
@@ -92,7 +92,7 @@ export const projects: Project[] = [
     featured: false,
     category: "Academic",
         video:"/Videos/TankGame/Thumbnail/TankGameThumbnailTest.mp4",
-    image: "/images/CarlottaWuWaPlaceholder.png",
+    image: "/Images/previews/project-7.webp",
   description: "An Unreal Engine tank combat playthrough built in Blueprints from a provided framework, featuring multiple enemy types, projectile patterns, and boss encounters.",
     tags: ["Unreal Engine Blueprints", "Visual Studio 2022","Unreal Engine"],
     link: "/projects/TankGame"
@@ -104,7 +104,7 @@ export const projects: Project[] = [
     featured: false,
     category: "Academic",
             video:"/Videos/StarWarsDungeon/Thumbnail/TextBasedGameThumbnail.mp4",
-    image: "/images/StarWarsDungeon/FinsheGame.png",
+    image: "/Images/previews/project-8.webp",
 description:
   "A pure C++, Star‑Wars‑inspired procedural text dungeon that uses a dot‑grid map, random enemy waves and postioning, a coin‑driven shop and inventory system, built to be memory‑safe and input‑robust.",    tags: ["C++", "Visual Studio 2022"],
     link: "/projects/StarWarsDungeon"
@@ -115,7 +115,7 @@ description:
     featured: false,
     category: "Academic",
     video:"/Videos/TopDownSlime/Thumbnail/SlimeDungeonThumbnail.mp4",
-    image: "/images/CarlottaWuWaPlaceholder.png",
+    image: "/Images/previews/project-9.webp",
 description: "A 2D top-down dungeon with four rooms of slime encounters, featuring projectile debuffs, trap-spawning bosses, stamina-based dash, and a lure ability to manage enemy pressure.",
     tags: ["C#","Unity", "Visual Studio 2022"],
     link: "/projects/TopDownSlimeDungeon"
@@ -127,7 +127,7 @@ description: "A 2D top-down dungeon with four rooms of slime encounters, featuri
     featured: false,
     category: "Academic",
         video:"/Videos/OneButtonChallenge/Thumbnail/OneButtonPrototypeThumbnail.mp4",
-    image: "/images/CarlottaWuWaPlaceholder.png",
+    image: "/Images/previews/project-10.webp",
     description: "A 3‑week 2D platformer prototype built around a one‑button challenge, where the Spacebar contextually controls double jumps, swinging, wall jumps, and Mario‑style stomp attacks.",
     tags: ["C#","Unity", "Visual Studio 2022"],
     link: "/projects/OneButtonPrototype"

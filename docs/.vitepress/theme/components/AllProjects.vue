@@ -12,9 +12,9 @@
     <div class="filter-section">
       <button 
         class="filter-toggle-btn"
+        :aria-expanded="showFilters"
         @click="toggleFilters"
       >
-        <span class="filter-icon">⚙️</span>
         {{ showFilters ? 'Hide Filters' : 'Show Filters' }}
       </button>
 
