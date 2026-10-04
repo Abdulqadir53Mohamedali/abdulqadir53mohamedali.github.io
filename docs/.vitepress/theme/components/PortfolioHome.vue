@@ -4,6 +4,7 @@ import { withBase } from 'vitepress'
 import { homeContact, homeProjects } from '../data/homePortfolio'
 import { projects } from '../data/projects'
 import PortfolioNav from './PortfolioNav.vue'
+import CardVideo from './CardVideo.vue'
 import NeuralBackground from './NeuralBackground.vue'
 import { experiences } from '../data/experience'
 import { educations } from '../data/education'
@@ -204,7 +205,7 @@ onBeforeUnmount(() => {
         <div class="av-section-heading"><div><p class="av-eyebrow">PROJECT SPOTLIGHT</p><h2 id="work-title">Featured projects</h2></div></div>
         <p class="av-section-intro">A selection of team projects, prototypes, and experiments. Take a look at what I built and how it works.</p>
         <div class="av-project-grid"><a v-for="(project, index) in homeProjects" :key="project.id" :href="withBase(project.link)" class="av-project-card" :class="`av-palette-${index % 3}`">
-          <div class="av-card-image"><video :src="withBase(project.video)" :poster="withBase(project.image)" :aria-label="`${project.title} gameplay preview`" autoplay muted loop playsinline preload="metadata" /><div class="av-media-badges"><span class="av-card-date">{{ project.date }}</span><span class="av-category-tag">{{ project.category }}</span></div><span class="av-card-featured">✧ Featured</span></div>
+          <div class="av-card-image"><CardVideo :src="withBase(project.video)" :poster="withBase(project.image)" :aria-label="`${project.title} gameplay preview`" /><div class="av-media-badges"><span class="av-card-date">{{ project.date }}</span><span class="av-category-tag">{{ project.category }}</span></div><span class="av-card-featured">✧ Featured</span></div>
           <div class="av-card-body"><h3>{{ project.title }}</h3><p>{{ project.description }}</p><div class="av-card-tags"><span v-for="tag in [...new Set([project.engine, ...project.tags])]" :key="tag">{{ tag }}</span></div><p v-if="project.award" class="av-card-award"><span aria-hidden="true">✧</span> {{ project.award }}</p></div>
         </a></div>
         <div class="av-all-projects"><a class="av-button av-button-primary" :href="withBase('/projects')">View all projects</a></div>

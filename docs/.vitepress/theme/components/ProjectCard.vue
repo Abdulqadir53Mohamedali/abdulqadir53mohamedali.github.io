@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import CardVideo from './CardVideo.vue'
 import { withBase } from 'vitepress'
 import { homeProjects } from '../data/homePortfolio'
 import '../styles/portfolioHome.css'
@@ -24,8 +25,8 @@ const award = computed(() => homeProjects.find(item => item.id === props.project
     :class="`av-palette-${(project.id - 1) % 3}`"
     v-bind="project.link ? { href: withBase(project.link) } : {}">
     <div class="av-card-image">
-      <video v-if="project.video" :src="withBase(project.video)" :poster="withBase(project.image)"
-        :aria-label="`${project.title} gameplay preview`" autoplay muted loop playsinline preload="metadata" />
+      <CardVideo v-if="project.video" :src="withBase(project.video)" :poster="withBase(project.image)"
+        :aria-label="`${project.title} gameplay preview`" />
       <img v-else :src="withBase(project.image)" :alt="project.title" loading="lazy" />
       <div class="av-media-badges">
         <span class="av-card-date">{{ project.date }}</span>
