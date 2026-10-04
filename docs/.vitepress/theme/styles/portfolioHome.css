@@ -448,3 +448,5 @@
 
 .av-home a.av-inline-link { color: #66aaff; text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 3px; }
 .av-home a.av-inline-link:hover { color: #99c6ff; text-decoration-color: currentColor; }
+
+.av-contact-intro p strong { font-weight: 700; color: #f1eee7; }
