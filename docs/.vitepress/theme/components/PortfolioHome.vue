@@ -187,7 +187,7 @@ onBeforeUnmount(() => {
             <div class="av-specialisms" aria-hidden="true"><Transition name="av-specialism" mode="out-in"><span :key="specialismIndex">{{ specialisms[specialismIndex] }}</span></Transition></div>
             <span class="av-sr-only">Gameplay Systems, Character AI, Movement & Game Feel, Combat Systems</span>
           </div>
-          <div class="av-actions"><a class="av-button av-button-primary" href="#work">View projects <ArrowUpRight /></a><a class="av-button av-button-quiet" :href="cv" target="_blank" rel="noopener">View CV <ArrowUpRight /></a></div>
+          <div class="av-actions"><a class="av-button av-button-primary" :href="withBase('/projects')">View projects <ArrowUpRight /></a><a class="av-button av-button-quiet" :href="cv" target="_blank" rel="noopener">View CV <ArrowUpRight /></a></div>
           <div class="av-hero-tools"><span>UNREAL ENGINE</span><span>UNITY</span><span>C++ / C#</span><span class="av-location">BASED IN THE UK</span></div>
         </div>
         <div class="av-showcase av-shell">
